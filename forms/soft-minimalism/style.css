@@ -107,6 +107,7 @@ body {
 
 .soft-card {
     background: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     border-radius: 32px;
     padding: 48px 40px;
@@ -794,5 +795,22 @@ body {
     
     .soft-blob {
         filter: blur(60px);
+    }
+}
+/* === Accessibility: keyboard focus indicators === */
+/* Restores visible focus rings for keyboard users without affecting mouse interaction. */
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Reduced motion: respect user preference. Animations defined per form will tone down. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }

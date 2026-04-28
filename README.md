@@ -12,13 +12,14 @@ Looking for more amazing form designs? Check out Colorlib's extensive collection
 
 ## 🚀 Features
 
-- **Pure HTML/CSS/JS** - No frameworks or build tools required
-- **Copy-Paste Ready** - Each form is completely self-contained
-- **Responsive Design** - Mobile-first approach for all devices
-- **Modern Aesthetics** - Latest design trends and visual effects
-- **Accessibility Focused** - WCAG 2.1 AA compliant forms
-- **Cross-Browser Support** - Works on all modern browsers
-- **Lightweight** - Optimized for performance
+- **Pure HTML/CSS/JS** — no frameworks, no build step, no package manager
+- **Copy-paste ready** — drop a single `forms/<name>/` folder into any project
+- **Shared `LoginFormBase` class** — every form inherits validation, lifecycle, and accessibility behavior from one place; per-form scripts average ~50 lines
+- **Responsive** — mobile-first across all 20 designs
+- **Accessible by default** — `:focus-visible` keyboard rings, `prefers-reduced-motion` honored globally, ARIA on icon controls, semantic markup
+- **SEO + social ready** — meta description, Open Graph, Twitter card, and SVG favicon on every form
+- **No external dependencies** — works fully offline, no CDN, no Google Fonts
+- **Cross-browser** — Chrome 88+, Firefox 103+, Safari 15.4+, Edge 88+
 
 ## 🖼️ Form Gallery
 
@@ -261,9 +262,11 @@ Looking for more amazing form designs? Check out Colorlib's extensive collection
 ## 🛠️ Quick Start
 
 ### 1. Browse & Choose
+
 Open `index.html` in your browser to see all forms in action with live previews.
 
 ### 2. Copy Form Files
+
 Each form is self-contained in its own directory:
 ```
 forms/[form-name]/
@@ -273,32 +276,44 @@ forms/[form-name]/
 └── README.md     # Documentation
 ```
 
-### 3. Include Dependencies
-Copy the shared utilities:
-```
-shared/js/form-utils.js    # Common form functionality
-```
+### 3. Include the shared utilities
+
+Copy `shared/js/form-utils.js` alongside your form folder. It provides:
+
+- `FormUtils.LoginFormBase` — the form lifecycle base class every form extends
+- `FormUtils.validateEmail` / `validatePassword` — drop-in validators
+- `FormUtils.showNotification` — XSS-safe toast (uses `textContent`, not `innerHTML`)
+- `FormUtils.setupFloatingLabels` / `setupPasswordToggle` — common UI helpers
 
 ### 4. Customize
+
 - Modify colors and styling in `style.css`
-- Adjust validation rules in `script.js`
+- Adjust the base class options in `script.js` (form-group selector, validators, elements to hide on success, etc.) — see any per-form `script.js` for examples (most are 30–80 lines)
 - Update text and labels in `index.html`
+
+### Demo credentials
+
+The included `simulateLogin` always succeeds **except** for one specific combination, used to demonstrate error states:
+
+- email: `admin@demo.com`
+- password: `wrongpassword`
 
 ## 📁 Project Structure
 
 ```
 login-forms/
-├── index.html                    # Main showcase page
+├── index.html                  # Main showcase page (gallery)
+├── CHANGELOG.md                # Project history
 ├── shared/
 │   └── js/
-│       └── form-utils.js        # Shared JavaScript utilities
-├── forms/                       # All form templates
+│       └── form-utils.js      # FormUtils helpers + LoginFormBase class
+├── forms/                     # 20 self-contained form templates
 │   ├── glassmorphism/
 │   ├── neon/
 │   ├── minimal/
-│   └── ... (19 forms total)
+│   └── ... (20 forms total)
 ├── assets/
-│   └── screenshots/             # Form preview images
+│   └── screenshots/           # 1400px-wide PNG previews
 └── docs/
     ├── design-guide.md
     └── screenshot-integration-guide.md
@@ -307,16 +322,53 @@ login-forms/
 ## 🎯 Form Features
 
 Each form includes:
+
 - ✅ Email and password inputs with validation
 - ✅ Floating label animations
 - ✅ Password visibility toggle
 - ✅ Real-time validation feedback
 - ✅ Loading and success states
 - ✅ Responsive mobile-first design
-- ✅ Accessibility features (ARIA labels, keyboard navigation)
-- ✅ Remember me checkbox
-- ✅ Forgot password link
-- ✅ Sign up link
+- ✅ ARIA labels on icon controls + visible keyboard focus rings
+- ✅ Honors `prefers-reduced-motion`
+- ✅ Meta description, Open Graph image, Twitter card, and SVG favicon
+- ✅ Remember me checkbox, forgot password and sign up links
+
+## 🏛 Architecture
+
+Every form is backed by `FormUtils.LoginFormBase` (in `shared/js/form-utils.js`). The base class owns the lifecycle:
+
+```js
+class GlassmorphismLoginForm extends FormUtils.LoginFormBase {
+    constructor() {
+        super({
+            hideOnSuccess: ['.divider', '.social-login', '.signup-link'],
+            // optional: validators, formGroupSelector, cardSelector,
+            // submitButtonSelector
+        });
+    }
+
+    decorate() {
+        // form-specific entrance animations or visual flourishes go here
+    }
+}
+```
+
+What the base class handles for you:
+
+- form submit, validation, and field-level error display
+- floating labels, password toggle, success state and reset
+- forgot-password, sign-up, and social-login link defaults
+- form-scoped keyboard shortcuts (no document-level leaks)
+- shake/animation cleanup via `animationend` (no `setTimeout` races)
+
+What you override per form:
+
+- `decorate()` for entrance effects, particles, parallax, glitch, etc.
+- `onSuccess()` if your form needs a custom success transition
+- constructor options for selectors and validators that differ from the defaults
+
+Per-form scripts ended up between **14 and 115 lines** — down from 105 to 542 lines before the refactor.
 
 ## 🎨 Customization Guide
 
@@ -351,17 +403,24 @@ Validation rules in `shared/js/form-utils.js`:
 | Edge    | 88+     |
 
 ### Performance
-- No external dependencies
-- Lightweight CSS animations
-- Optimized for fast loading
-- Lazy loading for images
+
+- No external runtime dependencies — no CDN, no Google Fonts, no npm
+- Screenshots stored at 1400px PNG (down from 3144px originals — 28 MB → 8.9 MB total)
+- Lazy-loading on gallery images
+- ~1,400 lines of JavaScript across all 20 forms (down from ~5,600 before the base-class refactor)
 
 ### Accessibility
-- Semantic HTML structure
-- ARIA labels and roles
-- Keyboard navigation support
-- High contrast ratios
-- Screen reader friendly
+
+- Visible keyboard focus rings via `:focus-visible` (mouse users unaffected)
+- Honors `prefers-reduced-motion: reduce` globally — animations collapse to ~0ms
+- Semantic HTML, ARIA labels on icon-only controls, `role="alert"` / `role="status"` on toasts
+- Form-scoped keyboard handlers (no document-level listener leaks)
+- All inputs have `autocomplete` hints (`email`, `current-password`)
+
+### Security
+
+- `FormUtils.showNotification` uses `textContent` instead of `innerHTML` — error messages from the auth backend cannot inject HTML
+- No `eval`, no `new Function`, no inline event handlers anywhere
 
 ## 🤝 Contributing
 
@@ -374,6 +433,10 @@ We welcome contributions! Feel free to:
 ## 📝 License
 
 This project is created by [Aigars Silkalns](https://github.com/puikinsh) for [Colorlib](https://colorlib.com).
+
+## 📜 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a full history of releases — including the 2.0 refactor that introduced the shared `LoginFormBase` class, accessibility improvements, security fixes, and an 80%+ reduction in per-form JavaScript.
 
 ## 📞 Support & Resources
 

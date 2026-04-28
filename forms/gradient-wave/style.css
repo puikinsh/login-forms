@@ -230,6 +230,7 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(255,255,255,0.1);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 16px;
@@ -715,6 +716,7 @@ body {
     background: rgba(255, 107, 107, 0.1);
     padding: 4px 8px;
     border-radius: 6px;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
@@ -830,5 +832,22 @@ body {
     .wave {
         width: 150%;
         left: -25%;
+    }
+}
+/* === Accessibility: keyboard focus indicators === */
+/* Restores visible focus rings for keyboard users without affecting mouse interaction. */
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Reduced motion: respect user preference. Animations defined per form will tone down. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }

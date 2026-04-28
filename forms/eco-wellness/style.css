@@ -770,3 +770,20 @@ body {
         height: 16px;
     }
 }
+/* === Accessibility: keyboard focus indicators === */
+/* Restores visible focus rings for keyboard users without affecting mouse interaction. */
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Reduced motion: respect user preference. Animations defined per form will tone down. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
