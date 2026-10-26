@@ -7,6 +7,8 @@ const { execFileSync } = require('node:child_process');
 
 const forms = readdirSync('forms', { withFileTypes: true }).filter(entry => entry.isDirectory()).map(entry => entry.name);
 const visibleCards = page => page.locator('.form-card:visible');
+// Frame enumeration can include Firefox's detached about:blank documents.
+const previewDocument = page => page.frameLocator('#preview-frame').locator('html');
 
 async function expectAccessible(page) {
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
@@ -53,10 +55,10 @@ test('preview changes the actual viewport, preserves form state, and closes from
     await expect(dialog.getByRole('heading')).toHaveText('Basic Form preview');
     const frame = page.frameLocator('#preview-frame');
     await expect(frame.locator('#email')).toBeVisible();
-    await expect.poll(() => page.frames()[1].evaluate(() => innerWidth)).toBe(1100);
+    await expect.poll(() => previewDocument(page).evaluate(() => innerWidth)).toBe(1100);
     await frame.locator('#email').fill('person@example.com');
     await dialog.getByRole('button', { name: 'Mobile', exact: true }).click();
-    await expect.poll(() => page.frames()[1].evaluate(() => innerWidth)).toBe(375);
+    await expect.poll(() => previewDocument(page).evaluate(() => innerWidth)).toBe(375);
     await expect(frame.locator('#email')).toHaveValue('person@example.com');
     await expect(dialog.getByRole('button', { name: 'Mobile', exact: true })).toHaveAttribute('aria-pressed', 'true');
     expect(demoRequests).toHaveLength(1);
@@ -107,14 +109,14 @@ for (const slug of forms) {
             await expect(page.locator('#preview-status')).toHaveText(`${label} preview ready.`);
             await expect(screen).toBeFocused();
             await expect(page.locator('#preview-frame')).toHaveAttribute('title', new RegExp(label));
-            expect(page.frames()[1].url()).toContain(`/forms/${slug}/${filename}`);
+            expect(await previewDocument(page).evaluate(() => location.href)).toContain(`/forms/${slug}/${filename}`);
             expect(new URL(page.url()).searchParams.get('screen')).toBe(value);
             expect(new URL(page.url()).searchParams.get('preview')).toBe(slug);
             for (const [device, width] of [['Mobile', 375], ['Desktop', 1100]]) {
                 await page.getByRole('button', { name: device, exact: true }).click();
-                await expect.poll(() => page.frames()[1].evaluate(() => innerWidth)).toBe(width);
+                await expect.poll(() => previewDocument(page).evaluate(() => innerWidth)).toBe(width);
                 expect(new URL(page.url()).searchParams.get('device')).toBe(device.toLowerCase());
-                expect(await page.frames()[1].evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+                expect(await previewDocument(page).evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
             }
         }
         // Follow native links, not just the outer switcher, through the complete reset journey.
@@ -142,7 +144,7 @@ for (const slug of forms) {
         await page.locator('[data-preview="basic"]').click();
         await expect(screen).toHaveValue('signin');
         await expect(page.locator('#preview-status')).toHaveText('Sign in preview ready.');
-        expect(page.frames()[1].url()).toContain('/forms/basic/index.html');
+        expect(await previewDocument(page).evaluate(() => location.href)).toContain('/forms/basic/index.html');
         expect(errors).toEqual([]);
     });
 }
@@ -170,8 +172,8 @@ for (const [index, slug] of forms.entries()) {
             await expect(page.getByLabel('Screen', { exact: true })).toHaveValue(screen);
             await expect(page.getByRole('button', { name: device === 'mobile' ? 'Mobile' : 'Desktop', exact: true })).toHaveAttribute('aria-pressed', 'true');
             await expect(page.locator('.preview-stage')).toHaveAttribute('aria-busy', 'false');
-            await expect.poll(() => page.frames()[1].evaluate(() => innerWidth)).toBe(device === 'mobile' ? 375 : 1100);
-            expect(page.frames()[1].url()).toContain(`/forms/${slug}/`);
+            await expect.poll(() => previewDocument(page).evaluate(() => innerWidth)).toBe(device === 'mobile' ? 375 : 1100);
+            expect(await previewDocument(page).evaluate(() => location.href)).toContain(`/forms/${slug}/`);
         }
         await page.getByRole('button', { name: 'Close preview' }).click();
         await expect(page.getByRole('dialog')).toBeHidden();
@@ -191,8 +193,8 @@ test('shared previews restore every screen and device on a phone-sized gallery',
         for (const device of ['desktop', 'mobile']) {
             await page.goto(`/?preview=basic&screen=${screen}&device=${device}`);
             await expect(page.locator('.preview-stage')).toHaveAttribute('aria-busy', 'false');
-            expect(page.frames()[1].url()).toContain(`/forms/basic/${file}.html`);
-            await expect.poll(() => page.frames()[1].evaluate(() => innerWidth)).toBe(device === 'mobile' ? 375 : 1100);
+            expect(await previewDocument(page).evaluate(() => location.href)).toContain(`/forms/basic/${file}.html`);
+            await expect.poll(() => previewDocument(page).evaluate(() => innerWidth)).toBe(device === 'mobile' ? 375 : 1100);
         }
     }
 });
