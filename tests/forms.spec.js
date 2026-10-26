@@ -108,3 +108,16 @@ for (const name of forms) {
         });
     });
 }
+
+// Pointer positions survive navigation/resizing, so test the hover state explicitly.
+test('neon-cyber submit text stays readable while hovered on every account screen', async ({ page }) => {
+    for (const viewport of [{ width: 1200, height: 900 }, { width: 375, height: 812 }]) {
+        await page.setViewportSize(viewport);
+        for (const screen of ['index', 'sign-up', 'reset-password', 'new-password']) {
+            await page.goto(`/forms/neon-cyber/${screen}.html`);
+            await page.locator('button[type="submit"]').hover();
+            const result = await new AxeBuilder({ page }).include('.neon-button').withTags(['wcag2a', 'wcag2aa']).analyze();
+            expect(result.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(node => node.target) }))).toEqual([]);
+        }
+    }
+});

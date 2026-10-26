@@ -21,7 +21,7 @@ The collection now ships 40 designs, each with four account screens, with no run
 - Added matching sign-up, reset-request, and new-password pages to all 40 designs and standalone downloads.
 - Connected existing sign-up/reset links, including navigation without JavaScript.
 - Added accessible password-creation validation, explicit local demo disclosures, generic reset results, loading/success announcements, and retryable demo failures.
-- Added cross-browser behavior, accessibility, offline-package, and desktop/mobile visual checks for the companion screens. CI runs browser/visual projects as separate jobs with per-project reports. No runtime dependencies added.
+- Added cross-browser behavior, accessibility, offline-package, and desktop/mobile visual checks for the companion screens. CI runs each browser suite in three shards, with complete desktop/mobile visual projects and separate reports. No runtime dependencies added.
 
 
 ### Screenshots and visual regression
@@ -50,10 +50,11 @@ The collection now ships 40 designs, each with four account screens, with no run
 
 ### Fixed
 
+- Kept Neon Cyber submit text readable over its green hover effect and added explicit hover accessibility checks for every account screen.
 - Fixed floating labels overlapping typed values, invalid-field labels dropping back over text, error blocks expanding positioned control backgrounds, and password-toggle animations replacing positioning transforms.
 - Let validation text wrap in normal flow, removed empty error spacing, restored vertical scrolling for tall forms, and preserved the case of revealed credentials. Added all-screen geometry checks at desktop, zoom-equivalent, phone, and narrow-phone widths.
 
-- Unified sign-in validation across all 20 templates: validate every field, accept existing passwords unchanged, and allow email addresses across domains.
+- Unified sign-in validation across all 40 templates: validate every field, accept existing passwords unchanged, and allow email addresses across domains.
 - Restored native keyboard access and visible focus for custom checkboxes; labeled icon-only social controls and exposed password-toggle state.
 - Associated errors with inputs, focused the first invalid field, announced loading, preserved authentication errors for retry, and focused success results.
 - Bound reset, signup, and provider actions through explicit data attributes; scoped shared behavior to each form instance.
