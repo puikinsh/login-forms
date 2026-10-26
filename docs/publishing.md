@@ -11,7 +11,9 @@ the demo adapter as production authentication or infer a license from another pa
 2. If templates or the shared runtime changed, run `npm run package:forms`.
 3. Run `npm run screenshots` after visual/source changes; review the captures.
 4. Run `npm run check` and the affected browser tests. Full CI runs `npm test`
-   across separate Chromium, Firefox, WebKit, desktop-visual, and mobile-visual jobs.
+   across Chromium, Firefox, WebKit, desktop-visual, and mobile-visual jobs. Each
+   behavior suite uses three shards to keep the 40-design run practical; visual
+   projects retain their complete accepted-reference checks.
 5. Compare visual changes against the frozen reference. Inspect expected/actual
    differences before deliberate acceptance with `npm run visual:update`.
 6. Include the deterministic ZIPs, responsive images/manifest, and reviewed visual

@@ -1,6 +1,7 @@
 name: Template quality
 on:
   push:
+    branches: [main]
   pull_request:
 permissions:
   contents: read
@@ -20,20 +21,19 @@ jobs:
     needs: checks
     runs-on: ubuntu-latest
     timeout-minutes: 35
+    name: ${{ matrix.project || matrix.browser }} (${{ matrix.shard }})
     strategy:
       fail-fast: false
       matrix:
+        browser: [chromium, firefox, webkit]
+        shard: [1/3, 2/3, 3/3]
         include:
-          - project: chromium
-            browser: chromium
-          - project: firefox
-            browser: firefox
-          - project: webkit
-            browser: webkit
           - project: visual-desktop
             browser: chromium
+            shard: 1/1
           - project: visual-mobile
             browser: chromium
+            shard: 1/1
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -42,10 +42,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps "${{ matrix.browser }}"
-      - run: npx playwright test --project="${{ matrix.project }}"
+      - run: npx playwright test --project="${{ matrix.project || matrix.browser }}" --shard="${{ matrix.shard }}"
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: playwright-report-${{ matrix.project }}
+          name: playwright-report-${{ matrix.project || matrix.browser }}-${{ strategy.job-index }}
           path: playwright-report/
           retention-days: 14
