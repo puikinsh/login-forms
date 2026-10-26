@@ -2,3 +2,6 @@ CLAUDE.md
 .DS_Store
 login-form-screenshots/
 colorlib-blog-post.html
+node_modules/
+playwright-report/
+test-results/

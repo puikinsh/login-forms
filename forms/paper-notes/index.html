@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick up the thread. — Paper Notes</title>
+    <meta name="description" content="A ruled paper desk with layered notes, a hand-drawn loop, and a lemon-yellow writing pad for the form.">
+    <meta name="author" content="Aigars Silkalns / Colorlib">
+    <link rel="canonical" href="https://puikinsh.github.io/login-forms/forms/paper-notes/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23292e28'/%3E%3Cpath d='M9 8h14v4H13v4h8v4h-8v5H9Z' fill='%23f6f5ef'/%3E%3C/svg%3E">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pick up the thread. — Paper Notes">
+    <meta property="og:description" content="A ruled paper desk with layered notes, a hand-drawn loop, and a lemon-yellow writing pad for the form.">
+    <meta property="og:url" content="https://puikinsh.github.io/login-forms/forms/paper-notes/">
+    <meta property="og:image" content="https://puikinsh.github.io/login-forms/assets/screenshots/paper-notes.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pick up the thread. — Paper Notes">
+    <meta name="twitter:description" content="A ruled paper desk with layered notes, a hand-drawn loop, and a lemon-yellow writing pad for the form.">
+    <meta name="twitter:image" content="https://puikinsh.github.io/login-forms/assets/screenshots/paper-notes.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="shell">
+        <aside class="scene" aria-label="Paper Notes studio">
+            <div class="brand">MARGIN / NOTES</div>
+            <h2>Make room<br> for the<br> unfinished.</h2>
+            <div class="scene-art" aria-hidden="true"><div class="notes"><span>THOUGHT NO. 018</span><p>Less scrolling.<br> More making.</p><svg viewBox="0 0 240 80"><path d="M10 50Q160 -10 225 45Q240 90 20 60" fill="none" stroke="currentColor" stroke-width="2"/></svg></div></div>
+            <p class="scene-footer">A quiet corner for bright, messy ideas.</p>
+        </aside>
+        <section class="form-area" aria-label="Account access">
+            <div class="login-card">
+                <header class="login-header"><p class="eyebrow">Paper Notes / member access</p><h1>Pick up the thread.</h1><p>Your next chapter is right where you left it.</p></header>
+                <form id="loginForm" method="post" novalidate>
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <div class="input-wrapper"><input type="email" id="email" name="email" required autocomplete="username" autocapitalize="none" spellcheck="false" aria-describedby="emailError"></div>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" name="password" required autocomplete="current-password" aria-describedby="passwordError">
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false"><svg class="eye-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/></svg></button>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                <div class="form-options"><label class="checkbox-wrapper"><input type="checkbox" id="remember" name="remember">Remember me</label><a href="reset-password.html" data-action="forgot-password">Reset password</a></div>
+                    <button type="submit" class="login-btn"><span class="btn-text">Sign in</span><span class="btn-loader" aria-hidden="true"></span></button>
+                </form>
+                <nav class="auth-navigation" aria-label="Account"><a href="sign-up.html" data-action="signup">Create account</a></nav>
+                <p class="auth-demo">Demo only. No account is created, no email is sent, and no password is changed. Nothing is saved.</p>
+                <div class="success-message" id="successMessage" tabindex="-1"><div class="success-icon" aria-hidden="true">✓</div><h3>Welcome back</h3><p>Sign-in demo complete. No session was created and no redirect will occur.</p><nav class="auth-navigation" aria-label="Next step"><a href="index.html">Back to sign in</a></nav></div>
+            </div>
+        </section>
+    </main>
+    <script src="../../shared/js/form-utils.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

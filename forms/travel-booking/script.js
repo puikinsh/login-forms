@@ -3,18 +3,11 @@ class TravelBookingLoginForm extends FormUtils.LoginFormBase {
     constructor() {
         super({
             hideOnSuccess: ['.divider', '.social-login', '.signup-link'],
-            validators: {
-                email: FormUtils.validateEmail,
-                password: (v) => {
-                    if (!v) return { isValid: false, message: 'Password is required' };
-                    if (v.length < 6) return { isValid: false, message: 'Password must be at least 6 characters long' };
-                    return { isValid: true };
-                },
-            },
         });
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         if (this.passwordToggle) {
             this.passwordToggle.addEventListener('click', () => {
                 this.passwordToggle.style.transform = 'scale(0.9)';

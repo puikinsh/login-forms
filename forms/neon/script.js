@@ -8,6 +8,7 @@ class NeonLoginForm extends FormUtils.LoginFormBase {
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         const card = document.querySelector('.login-card');
         if (card) {
             card.style.opacity = '0';
@@ -21,6 +22,7 @@ class NeonLoginForm extends FormUtils.LoginFormBase {
 
         // Mouse-tracking parallax for glow orbs
         document.addEventListener('mousemove', (e) => {
+            if (FormUtils.prefersReducedMotion()) return;
             const orbs = document.querySelectorAll('.glow-orb');
             const x = e.clientX / window.innerWidth;
             const y = e.clientY / window.innerHeight;

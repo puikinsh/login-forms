@@ -56,18 +56,15 @@ Update the SSO buttons and JavaScript handlers to integrate with your actual aut
 
 ## Enterprise Features
 
-- **Business Email Validation**: Blocks common personal email domains
-- **Strong Password Requirements**: Enforces corporate password policies
+- **Email Validation**: Accepts valid email addresses across domains
+- **Sign-in Validation**: Requires a password without imposing registration rules
 - **SSO Integration Ready**: Prepared for enterprise authentication systems
 - **Professional Error Handling**: Corporate-appropriate error messages
-- **Compliance Ready**: Structure supports security audit requirements
 
 ## Security Features
 
-- Password strength validation (uppercase, lowercase, numbers, special characters)
-- Minimum 8-character password requirement
-- Business email domain validation
-- Protection against personal email usage
+- Required email and password with accessible error feedback
+- Password values are submitted unchanged
 - Loading states prevent multiple submissions
 
 ## Browser Support
@@ -93,3 +90,28 @@ Optimized for modern business browsers with enterprise security features.
 ## Credits
 
 Created by [Aigars Silkalns](https://github.com/puikinsh/) for [Colorlib](https://colorlib.com).
+## Shared behavior and checks
+
+This template uses the shared sign-in behavior: a valid email and a nonempty, unchanged password; keyboard-accessible remember and password controls; associated field errors; and loading/failure/success feedback. Social actions show demo feedback. Sign-up and reset links open matching companion screens. See the root [development and integration guide](../../README.md#development-and-quality-checks) for automated checks and the `authenticate` callback.
+
+
+## Matching sign-up and reset screens
+
+Open `sign-up.html` to preview account creation, `reset-password.html` to request
+reset instructions, or `new-password.html` to preview setting a new password.
+These screens reuse this design's CSS and JavaScript. New passwords require at
+least 15 characters; spaces and paste are allowed. Sign-in passwords remain unchanged.
+All fields have associated validation messages, keyboard controls, loading feedback,
+retryable errors, and a focused success result.
+
+These are local demonstrations: no accounts are created, emails sent, passwords
+changed, or data saved. Use `error@demo.com` for a sign-up/reset request failure or
+`demo-error-password` for a new-password failure. Edit and retry to complete the demo.
+Without JavaScript, navigation works and companion submission stays disabled.
+
+For backend integration, see the root [companion-screen guide](../../README.md#matching-sign-up-and-password-reset).
+The standalone download includes all four HTML screens and the shared helper.
+
+Validation messages wrap below their controls. Filled labels remain separate from
+typed values, including invalid fields, and password visibility preserves control
+position and credential case. Tall pages remain vertically scrollable.

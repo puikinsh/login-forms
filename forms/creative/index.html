@@ -48,11 +48,11 @@
                 <p>Enter your creative space</p>
             </div>
             
-            <form class="login-form" id="loginForm" novalidate>
+            <form class="login-form" id="loginForm" method="post" novalidate>
                 <div class="form-group">
                     <div class="input-wrapper">
                         <div class="input-decoration"></div>
-                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
                         <label for="email">Email Address</label>
                         <div class="input-waves">
                             <div class="wave wave-1"></div>
@@ -66,9 +66,9 @@
                 <div class="form-group">
                     <div class="input-wrapper password-wrapper">
                         <div class="input-decoration"></div>
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                        <input type="password" id="password" name="password" required autocomplete="current-password" aria-describedby="passwordError" placeholder=" ">
                         <label for="password">Password</label>
-                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
                             <span class="toggle-icon"></span>
                         </button>
                         <div class="input-waves">
@@ -90,7 +90,7 @@
                             Stay creative
                         </label>
                     </div>
-                    <a href="#" class="forgot-password">Forgot your spark?</a>
+                    <a href="reset-password.html" class="forgot-password" data-action="forgot-password">Forgot your spark?</a>
                 </div>
 
                 <button type="submit" class="login-btn">
@@ -111,27 +111,27 @@
             </div>
 
             <div class="creative-social">
-                <button type="button" class="social-btn behance-btn">
+                <button type="button" class="social-btn behance-btn" data-action="social" data-provider="Behance">
                     <div class="social-icon behance-icon"></div>
                     <span>Behance</span>
                 </button>
-                <button type="button" class="social-btn dribbble-btn">
+                <button type="button" class="social-btn dribbble-btn" data-action="social" data-provider="Dribbble">
                     <div class="social-icon dribbble-icon"></div>
                     <span>Dribbble</span>
                 </button>
             </div>
 
             <div class="signup-link">
-                <p>New to creativity? <a href="#">Start your journey</a></p>
+                <p>New to creativity? <a href="sign-up.html" data-action="signup">Start your journey</a></p>
             </div>
 
-            <div class="success-message" id="successMessage">
+            <div class="success-message" id="successMessage" tabindex="-1">
                 <div class="success-animation">
                     <div class="success-circle"></div>
                     <div class="success-checkmark">✓</div>
                 </div>
                 <h3>Welcome, Creator!</h3>
-                <p>Entering your creative dimension...</p>
+                <p>Sign-in demo complete. No session was created and no redirect will occur.</p>
             </div>
         </div>
     </div>

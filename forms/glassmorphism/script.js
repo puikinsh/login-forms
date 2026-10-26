@@ -7,6 +7,7 @@ class GlassmorphismLoginForm extends FormUtils.LoginFormBase {
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         FormUtils.addEntranceAnimation(document.querySelector('.login-card'));
 
         // Stagger inputs on entrance

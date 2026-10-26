@@ -33,18 +33,18 @@
                 <p>Access your account securely</p>
             </div>
             
-            <form class="login-form" id="loginForm" novalidate>
+            <form class="login-form" id="loginForm" method="post" novalidate>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required autocomplete="email">
+                    <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
                     <span class="error-message" id="emailError"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="password-wrapper">
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
-                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                        <input type="password" id="password" name="password" required autocomplete="current-password" aria-describedby="passwordError" placeholder=" ">
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
                             <svg class="eye-open" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                 <path d="M9 3.75C5.25 3.75 2.04 6.24 1.5 9c.54 2.76 3.75 5.25 7.5 5.25s6.96-2.49 7.5-5.25c-.54-2.76-3.75-5.25-7.5-5.25zm0 8.75a3.5 3.5 0 110-7 3.5 3.5 0 010 7zm0-5.5a2 2 0 100 4 2 2 0 000-4z" fill="currentColor"/>
                             </svg>
@@ -62,7 +62,7 @@
                         <span class="checkmark"></span>
                         Remember this device
                     </label>
-                    <a href="#" class="forgot-link">Reset password</a>
+                    <a href="reset-password.html" class="forgot-link" data-action="forgot-password">Reset password</a>
                 </div>
 
                 <button type="submit" class="login-btn">
@@ -78,10 +78,11 @@
                     <path d="M8 1L3 3v4.5c0 2.89 2 5.5 5 6 3-0.5 5-3.11 5-6V3l-5-2z" stroke="#10B981" stroke-width="1.5" fill="none"/>
                     <path d="M6 8l1.5 1.5L11 6" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span>Your connection is secured with 256-bit SSL encryption</span>
+                <span>Demo only. No connection to a banking service.</span>
             </div>
 
-            <div class="success-message" id="successMessage">
+            <nav class="auth-navigation" aria-label="Account"><a href="sign-up.html" data-action="signup">Create account</a></nav>
+            <div class="success-message" id="successMessage" tabindex="-1">
                 <div class="success-icon">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                         <circle cx="14" cy="14" r="14" fill="#10B981"/>
@@ -89,7 +90,7 @@
                     </svg>
                 </div>
                 <h3>Welcome back</h3>
-                <p>Taking you to your dashboard...</p>
+                <p>Sign-in demo complete. No session was created and no redirect will occur.</p>
             </div>
         </div>
     </div>

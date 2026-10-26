@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Login Forms Showcase</title>
+    <meta name="description" content="Explore 40 dependency-free login forms. Filter designs, try live mobile previews, and download complete HTML, CSS, and JavaScript packages.">
     <style>
         :root {
-            --primary-color: #6366f1;
+            --primary-color: #4f46e5;
             --text-primary: #1e293b;
             --text-secondary: #64748b;
             --bg-primary: #ffffff;
@@ -74,7 +75,7 @@
 
         .forms-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
@@ -104,6 +105,8 @@
             border-radius: 16px 16px 0 0;
         }
         
+        .form-preview picture { width: 100%; height: 100%; display: block; }
+
         .form-preview img {
             width: 100%;
             height: 100%;
@@ -273,23 +276,206 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        [hidden] { display: none !important; }
+        * { box-sizing: border-box; }
+        :focus-visible { outline: 3px solid var(--primary-color); outline-offset: 4px; }
+        .header { margin-bottom: 1.5rem; }
+        .header h1 { margin: 0 0 0.5rem; }
+        .header p { font-size: 1.05rem; max-width: 720px; }
+        .category-title { margin-top: 0; margin-bottom: 0.5rem; }
+        .category-description { margin-top: 0; margin-bottom: 1.5rem; }
+        .gallery-tools {
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+        }
+        .gallery-fields { display: flex; gap: 1rem; align-items: end; flex-wrap: wrap; }
+        .gallery-fields > div { flex: 1 1 220px; }
+        .gallery-fields .search-field { flex-grow: 2; }
+        .gallery-fields label { display: block; margin-bottom: 0.4rem; font-size: 0.9rem; font-weight: 600; }
+        .gallery-fields input, .gallery-fields select {
+            width: 100%; min-height: 48px; padding: 0.7rem 0.9rem;
+            border: 1px solid #94a3b8; border-radius: 8px; color: var(--text-primary);
+            background: white; font: inherit; font-size: 16px;
+        }
+        .gallery-fields input::placeholder { color: #64748b; }
+        .gallery-fields .btn { min-height: 48px; }
+        .gallery-results { margin: 1rem 0 0; font-weight: 600; }
+        .download-note { margin: 0.3rem 0 0; font-size: 0.9rem; color: var(--text-secondary); }
+        .btn { font-family: inherit; line-height: 1.4; justify-content: center; min-height: 44px; }
+        .btn:disabled { cursor: default; opacity: 0.55; }
+        .form-actions { margin-top: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
+        .form-actions .btn { padding: 0.75rem 0.5rem; }
+        .form-links { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.9rem; font-size: 0.85rem; }
+        .form-links a { color: var(--primary-color); text-underline-offset: 3px; }
+        .empty-state { padding: 3rem 1.5rem; border: 1px dashed #94a3b8; border-radius: 16px; text-align: center; }
+        .shortlist-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem; margin-top: 1rem; }
+        #favorites-count { font-weight: 600; margin-right: 0.3rem; }
+        #favorites-status:empty { display: none; }
+        .favorite-toggle { grid-column: 1 / -1; }
+        .favorite-toggle[aria-pressed="true"] { color: #1e40af; background: #dbeafe; }
+        .named-lists { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color); }
+        .named-lists .gallery-fields .btn { flex: 0 1 auto; }
+        #named-list-help, #shared-list-label { overflow-wrap: anywhere; }
+        #list-editor, #list-delete-confirm { margin-top: 1rem; }
+        #list-editor label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+        #list-name { width: 100%; min-height: 48px; padding: 0.6rem; font: inherit; border: 1px solid #94a3b8; border-radius: 8px; }
+        #list-name-error { color: #b91c1c; overflow-wrap: anywhere; }
+        #list-name-error:empty { display: none; }
+        #list-delete-confirm strong { overflow-wrap: anywhere; }
+        .list-toggle { grid-column: 1 / -1; overflow-wrap: anywhere; min-width: 0; }
+        .list-toggle[aria-pressed="true"] { color: #1e40af; background: #dbeafe; }
+        .shortlist-share { margin-top: 1rem; }
+        .shortlist-share label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+        .shortlist-share input { width: 100%; min-height: 48px; font: inherit; padding: 0.6rem; border: 1px solid #94a3b8; border-radius: 8px; }
+        body.preview-open { overflow: hidden; }
+        #form-preview-dialog {
+            width: min(1200px, calc(100% - 2rem)); max-height: calc(100dvh - 2rem);
+            padding: 0; border: 1px solid var(--border-color); border-radius: 16px;
+            color: var(--text-primary); background: white;
+        }
+        #form-preview-dialog[open] { display: flex; flex-direction: column; }
+        .preview-header, .preview-controls, #preview-help { flex-shrink: 0; }
+        #form-preview-dialog::backdrop { background: rgba(15, 23, 42, 0.65); }
+        .preview-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 1.25rem; }
+        .preview-header-actions { display: flex; flex-shrink: 0; gap: 0.5rem; }
+        #preview-share-fallback { flex-shrink: 0; margin: 0.5rem 1.25rem 0; }
+        #preview-share-fallback label { display: block; font-weight: 600; font-size: 0.9rem; }
+        #preview-link { width: 100%; padding: 0.65rem; border: 1px solid #64748b; border-radius: 8px; color: #334155; background: white; font: inherit; }
+        #preview-link:focus-visible { outline: 3px solid var(--primary-color); outline-offset: 2px; }
+        .preview-header h2 { min-width: 0; overflow-wrap: anywhere; margin: 0; font-size: 1.25rem; }
+        .preview-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem; padding: 0 1.25rem; }
+        .comparison-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; padding: 0 1.25rem 0.75rem; flex-shrink: 0; }
+        .comparison-controls > div { min-width: 0; }
+        .comparison-controls label { min-width: 0; font-size: 0.85rem; font-weight: 600; }
+        .comparison-controls select { display: block; width: 100%; min-width: 0; margin-top: 0.25rem; padding: 0.65rem; border: 1px solid #64748b; border-radius: 8px; color: #334155; background: white; font: inherit; }
+        .comparison-controls select:focus-visible { outline: 3px solid var(--primary-color); outline-offset: 2px; }
+        .preview-panes { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1rem; }
+        .preview-panes.is-comparing { grid-template-columns: repeat(2, minmax(280px, 1fr)); }
+        .preview-pane { min-width: 0; }
+        .preview-pane-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+        .preview-pane-header h3 { margin: 0; font-size: 1rem; overflow-wrap: anywhere; }
+        .preview-pane-header .btn { padding: 0.5rem 0.65rem; font-size: 0.8rem; }
+        #comparison-help { font-weight: 600; }
+        .screen-switch { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.9rem; font-weight: 600; }
+        #preview-screen { max-width: 100%; padding: 0.65rem 0.75rem; border: 1px solid #64748b; border-radius: 8px; color: #334155; background: white; font: inherit; }
+        #preview-screen:focus-visible { outline: 3px solid var(--primary-color); outline-offset: 3px; }
+        #preview-status { display: block; min-height: 1.4em; font-weight: 600; }
+        .device-switch { display: flex; padding: 3px; gap: 3px; border-radius: 10px; background: #e2e8f0; }
+        .device-switch .btn { color: #334155; background: transparent; padding: 0.55rem 1rem; }
+        .device-switch [aria-pressed="true"] { background: var(--primary-color); color: white; }
+        #preview-dimensions { color: #475569; font-size: 0.85rem; }
+        #preview-download { margin-left: auto; }
+        #preview-help { margin: 0.75rem 1.25rem; color: #475569; font-size: 0.85rem; }
+        .preview-stage { flex: 1 1 auto; min-height: 0; padding: 1rem; background: #e2e8f0; overflow: auto; max-height: 70vh; }
+        .preview-canvas { position: relative; margin: 0 auto; background: white; box-shadow: 0 4px 20px #0f172a26; }
+        #preview-frame, #compare-frame { display: block; border: 0; transform-origin: top left; background: white; }
+        @media (max-width: 480px) {
+            .gallery-tools { padding: 1rem; }
+            .gallery-fields > div, .gallery-fields .btn { flex-basis: 100%; }
+            .named-lists .gallery-fields .btn { flex: 1 1 100px; }
+            .form-card { padding: 1.25rem; }
+            .form-preview { margin: -1.25rem -1.25rem 1rem; }
+            .preview-header, .preview-controls { padding-left: 0.75rem; padding-right: 0.75rem; }
+            .preview-header { flex-wrap: wrap; }
+            #preview-title { flex-basis: 100%; }
+            .preview-header-actions { margin-left: auto; }
+            .preview-header-actions .btn { padding: 0.65rem 0.75rem; }
+            .comparison-controls { padding-left: 0.75rem; padding-right: 0.75rem; }
+            .screen-switch { order: 0; }
+            #preview-dimensions { order: 1; }
+            .device-switch { order: 2; }
+            #preview-download { order: 3; margin-left: 0; padding: 0.65rem 0.75rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; animation: none !important; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1>Modern Login Forms</h1>
-            <p>A curated collection of 20+ beautiful, responsive login forms featuring 2025 design trends. Built with pure HTML, CSS, and JavaScript. Copy, customize, and use in your projects.</p>
+            <p>40 distinctive login forms. Find your style, try it on mobile, and download everything you need. Pure HTML, CSS, and JavaScript.</p>
         </header>
 
-        <section class="category">
+        <section class="gallery-tools" aria-label="Find a login form" hidden>
+            <div class="gallery-fields">
+                <div class="search-field">
+                    <label for="form-search">Search forms</label>
+                    <input type="search" id="form-search" placeholder="Try minimal, neon, or banking" autocomplete="off">
+                </div>
+                <div>
+                    <label for="category-filter">Category</label>
+                    <select id="category-filter">
+                        <option value="all">All categories</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="collection-filter">Show</label>
+                    <select id="collection-filter">
+                        <option value="all">All 40 forms</option>
+                        <option value="favorites">My favorites</option>
+                        <option value="shortlist" disabled>Shared shortlist</option>
+                        <option value="saved" disabled>Selected named list</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-secondary" id="clear-filters" disabled>Clear filters</button>
+            </div>
+            <p class="gallery-results" id="gallery-results" role="status" aria-live="polite" aria-atomic="true">40 forms</p>
+            <div class="shortlist-actions" aria-label="Shortlist actions">
+                <span id="favorites-count">0 favorites</span>
+                <button type="button" class="btn btn-secondary" id="compare-favorites" disabled>Compare favorites</button>
+                <button type="button" class="btn btn-secondary" id="share-favorites" disabled>Share favorites</button>
+                <button type="button" class="btn btn-secondary" id="save-shortlist" hidden>Save shared shortlist</button>
+            </div>
+            <p class="download-note" id="shared-list-label" hidden></p>
+            <div class="named-lists" aria-label="Named shortlists">
+                <div class="gallery-fields">
+                    <div><label for="saved-list">Named list</label><select id="saved-list"><option value="">Choose a list</option></select></div>
+                    <button type="button" class="btn btn-secondary" id="new-list">New list</button>
+                    <button type="button" class="btn btn-secondary" id="rename-list" disabled>Rename</button>
+                    <button type="button" class="btn btn-secondary" id="delete-list" disabled>Delete</button>
+                    <button type="button" class="btn btn-secondary" id="browse-list" disabled>Add forms</button>
+                </div>
+                <p class="download-note" id="named-list-help">Create a list from your current favorites or shared shortlist, then use Add forms to edit its collection.</p>
+                <form id="list-editor" hidden novalidate>
+                    <label for="list-name">List name</label>
+                    <input id="list-name" type="text" maxlength="60" required autocomplete="off" aria-describedby="list-name-error">
+                    <p id="list-name-error" role="alert"></p>
+                    <button class="btn btn-primary" type="submit" id="save-list-name">Create list</button>
+                    <button class="btn btn-secondary" type="button" id="cancel-list-editor">Cancel</button>
+                </form>
+                <div id="list-delete-confirm" hidden>
+                    <p>Delete <strong id="delete-list-name"></strong>? This removes this saved list from your browser.</p>
+                    <button type="button" class="btn btn-primary" id="confirm-delete-list">Delete list</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-delete-list">Cancel</button>
+                </div>
+            </div>
+            <p class="download-note" id="favorites-note">Favorites stay in this browser. Shared shortlists can be saved to your own favorites.</p>
+            <p id="favorites-status" role="status" aria-live="polite" aria-atomic="true"></p>
+            <div class="shortlist-share" id="shortlist-share-fallback" hidden>
+                <label for="shortlist-link">Shortlist link</label>
+                <input type="url" id="shortlist-link" readonly spellcheck="false">
+            </div>
+            <p class="download-note">Every ZIP includes the form, styles, and shared JavaScript. Unzip and open — no installation needed.</p>
+        </section>
+        <p class="empty-state" id="empty-state" hidden>No forms match these filters. Try another keyword, save some favorites, or clear the filters.</p>
+
+        <section class="category" data-category="modern" data-label="Modern & Stylish">
             <h2 class="category-title">🎨 Modern & Stylish</h2>
             <p class="category-description">Forms featuring the latest design trends with smooth animations and modern aesthetics.</p>
             
             <div class="forms-grid">
-                <div class="form-card">
+                <div class="form-card" data-slug="glassmorphism">
                     <div class="form-preview">
-                        <img src="assets/screenshots/glassmorphism.png" alt="Glassmorphism form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/glassmorphism-400.webp 400w, assets/screenshots/glassmorphism-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/glassmorphism.png" width="1200" height="900" decoding="async" alt="Glassmorphism form preview" loading="eager" fetchpriority="high">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Glassmorphism</h3>
@@ -302,14 +488,21 @@
                         <li>Real-time validation</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/glassmorphism/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/glassmorphism/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="glassmorphism" aria-label="Preview Glassmorphism" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/glassmorphism.zip" class="btn btn-secondary" download aria-label="Download Glassmorphism ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/glassmorphism/index.html">Open demo</a>
+                        <a href="forms/glassmorphism/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="neon">
                     <div class="form-preview">
-                        <img src="assets/screenshots/neon.png" alt="Neon Minimalist form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/neon-400.webp 400w, assets/screenshots/neon-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/neon.png" width="1200" height="907" decoding="async" alt="Neon Minimalist form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Neon Minimalist</h3>
@@ -322,14 +515,21 @@
                         <li>Minimalist design</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/neon/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/neon/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="neon" aria-label="Preview Neon Minimalist" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/neon.zip" class="btn btn-secondary" download aria-label="Download Neon Minimalist ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/neon/index.html">Open demo</a>
+                        <a href="forms/neon/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="gradient-wave">
                     <div class="form-preview">
-                        <img src="assets/screenshots/gradient-wave.png" alt="Gradient Wave form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/gradient-wave-400.webp 400w, assets/screenshots/gradient-wave-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/gradient-wave.png" width="1200" height="900" decoding="async" alt="Gradient Wave form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Gradient Wave</h3>
@@ -342,14 +542,21 @@
                         <li>Dynamic animations</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/gradient-wave/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/gradient-wave/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="gradient-wave" aria-label="Preview Gradient Wave" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/gradient-wave.zip" class="btn btn-secondary" download aria-label="Download Gradient Wave ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/gradient-wave/index.html">Open demo</a>
+                        <a href="forms/gradient-wave/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="neumorphism">
                     <div class="form-preview">
-                        <img src="assets/screenshots/neumorphism.png" alt="Neumorphism form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/neumorphism-400.webp 400w, assets/screenshots/neumorphism-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/neumorphism.png" width="1200" height="900" decoding="async" alt="Neumorphism form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Neumorphism</h3>
@@ -362,41 +569,55 @@
                         <li>Subtle depth effects</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/neumorphism/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/neumorphism/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="neumorphism" aria-label="Preview Neumorphism" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/neumorphism.zip" class="btn btn-secondary" download aria-label="Download Neumorphism ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/neumorphism/index.html">Open demo</a>
+                        <a href="forms/neumorphism/README.md">Documentation</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="category">
+        <section class="category" data-category="corporate" data-label="Corporate & Clean">
             <h2 class="category-title">💼 Corporate & Clean</h2>
             <p class="category-description">Professional forms suitable for business applications and corporate websites.</p>
             
             <div class="forms-grid">
-                <div class="form-card">
+                <div class="form-card" data-slug="corporate">
                     <div class="form-preview">
-                        <img src="assets/screenshots/corporate.png" alt="Corporate Professional form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/corporate-400.webp 400w, assets/screenshots/corporate-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/corporate.png" width="1200" height="923" decoding="async" alt="Corporate Professional form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Corporate Professional</h3>
-                    <p class="form-description">Enterprise-grade form with SSO integration and enhanced security features.</p>
+                    <p class="form-description">Professional layout with Microsoft and Okta sign-in demo actions.</p>
                     <ul class="form-features">
-                        <li>SSO integration (Azure AD, Okta)</li>
-                        <li>Business email validation</li>
+                        <li>Microsoft &amp; Okta demo actions</li>
+                        <li>Accessible sign-in validation</li>
                         <li>Corporate branding space</li>
-                        <li>Enhanced security features</li>
+                        <li>Loading and retry states</li>
                         <li>Professional styling</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/corporate/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/corporate/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="corporate" aria-label="Preview Corporate Professional" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/corporate.zip" class="btn btn-secondary" download aria-label="Download Corporate Professional ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/corporate/index.html">Open demo</a>
+                        <a href="forms/corporate/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="material">
                     <div class="form-preview">
-                        <img src="assets/screenshots/material.png" alt="Material Design form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/material-400.webp 400w, assets/screenshots/material-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/material.png" width="1200" height="900" decoding="async" alt="Material Design form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Material Design</h3>
@@ -409,21 +630,28 @@
                         <li>Smooth transitions</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/material/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/material/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="material" aria-label="Preview Material Design" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/material.zip" class="btn btn-secondary" download aria-label="Download Material Design ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/material/index.html">Open demo</a>
+                        <a href="forms/material/README.md">Documentation</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="category">
+        <section class="category" data-category="minimal" data-label="Minimal & Simple">
             <h2 class="category-title">🎯 Minimal & Simple</h2>
             <p class="category-description">Clean, focused forms that prioritize usability and simplicity.</p>
             
             <div class="forms-grid">
-                <div class="form-card">
+                <div class="form-card" data-slug="basic">
                     <div class="form-preview">
-                        <img src="assets/screenshots/basic.png" alt="Basic Form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/basic-400.webp 400w, assets/screenshots/basic-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/basic.png" width="1200" height="900" decoding="async" alt="Basic Form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Basic Form</h3>
@@ -436,14 +664,21 @@
                         <li>Accessibility focused</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/basic/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="#" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="basic" aria-label="Preview Basic Form" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/basic.zip" class="btn btn-secondary" download aria-label="Download Basic Form ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/basic/index.html">Open demo</a>
+                        <a href="forms/basic/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="minimal">
                     <div class="form-preview">
-                        <img src="assets/screenshots/minimal.png" alt="Minimal Clean form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/minimal-400.webp 400w, assets/screenshots/minimal-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/minimal.png" width="1200" height="900" decoding="async" alt="Minimal Clean form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Minimal Clean</h3>
@@ -456,21 +691,28 @@
                         <li>Fast performance</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/minimal/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/minimal/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="minimal" aria-label="Preview Minimal Clean" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/minimal.zip" class="btn btn-secondary" download aria-label="Download Minimal Clean ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/minimal/index.html">Open demo</a>
+                        <a href="forms/minimal/README.md">Documentation</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="category">
-            <h2 class="category-title">🚀 2025 Design Trends</h2>
-            <p class="category-description">Cutting-edge forms showcasing the latest design trends and emerging aesthetics of 2025.</p>
+        <section class="category" data-category="themed" data-label="Themed & Expressive">
+            <h2 class="category-title">🚀 Themed & Expressive</h2>
+            <p class="category-description">Distinctive themes, expressive details, and playful interactions.</p>
             
             <div class="forms-grid">
-                <div class="form-card">
+                <div class="form-card" data-slug="ai-assistant">
                     <div class="form-preview">
-                        <img src="assets/screenshots/ai-assistant.png" alt="AI Assistant form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/ai-assistant-400.webp 400w, assets/screenshots/ai-assistant-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/ai-assistant.png" width="1200" height="900" decoding="async" alt="AI Assistant form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">AI Assistant</h3>
@@ -483,14 +725,21 @@
                         <li>Rotating AI logo animation</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/ai-assistant/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/ai-assistant/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="ai-assistant" aria-label="Preview AI Assistant" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/ai-assistant.zip" class="btn btn-secondary" download aria-label="Download AI Assistant ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/ai-assistant/index.html">Open demo</a>
+                        <a href="forms/ai-assistant/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="eco-wellness">
                     <div class="form-preview">
-                        <img src="assets/screenshots/eco-wellness.png" alt="Eco Wellness form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/eco-wellness-400.webp 400w, assets/screenshots/eco-wellness-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/eco-wellness.png" width="1200" height="900" decoding="async" alt="Eco Wellness form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Eco Wellness</h3>
@@ -503,14 +752,21 @@
                         <li>Organic field indicators</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/eco-wellness/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/eco-wellness/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="eco-wellness" aria-label="Preview Eco Wellness" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/eco-wellness.zip" class="btn btn-secondary" download aria-label="Download Eco Wellness ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/eco-wellness/index.html">Open demo</a>
+                        <a href="forms/eco-wellness/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="neon-cyber">
                     <div class="form-preview">
-                        <img src="assets/screenshots/neon-cyber.png" alt="Neon Cyber form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/neon-cyber-400.webp 400w, assets/screenshots/neon-cyber-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/neon-cyber.png" width="1200" height="900" decoding="async" alt="Neon Cyber form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Neon Cyber</h3>
@@ -523,14 +779,21 @@
                         <li>Scanning field effects</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/neon-cyber/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/neon-cyber/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="neon-cyber" aria-label="Preview Neon Cyber" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/neon-cyber.zip" class="btn btn-secondary" download aria-label="Download Neon Cyber ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/neon-cyber/index.html">Open demo</a>
+                        <a href="forms/neon-cyber/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="soft-minimalism">
                     <div class="form-preview">
-                        <img src="assets/screenshots/soft-minimalism.png" alt="Soft Minimalism form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/soft-minimalism-400.webp 400w, assets/screenshots/soft-minimalism-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/soft-minimalism.png" width="1200" height="900" decoding="async" alt="Soft Minimalism form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Soft Minimalism</h3>
@@ -543,14 +806,21 @@
                         <li>Human-centered UX design</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/soft-minimalism/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/soft-minimalism/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="soft-minimalism" aria-label="Preview Soft Minimalism" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/soft-minimalism.zip" class="btn btn-secondary" download aria-label="Download Soft Minimalism ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/soft-minimalism/index.html">Open demo</a>
+                        <a href="forms/soft-minimalism/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="retro-future">
                     <div class="form-preview">
-                        <img src="assets/screenshots/retro-future.png" alt="Retro Future form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/retro-future-400.webp 400w, assets/screenshots/retro-future-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/retro-future.png" width="1200" height="900" decoding="async" alt="Retro Future form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Retro Future</h3>
@@ -563,21 +833,28 @@
                         <li>Portal success animations</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/retro-future/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/retro-future/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="retro-future" aria-label="Preview Retro Future" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/retro-future.zip" class="btn btn-secondary" download aria-label="Download Retro Future ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/retro-future/index.html">Open demo</a>
+                        <a href="forms/retro-future/README.md">Documentation</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="category">
+        <section class="category" data-category="elegant" data-label="Simple & Elegant">
             <h2 class="category-title">💼 Simple & Elegant</h2>
             <p class="category-description">Clean, professional forms inspired by leading tech platforms and modern design principles.</p>
             
             <div class="forms-grid">
-                <div class="form-card">
+                <div class="form-card" data-slug="minimal-music">
                     <div class="form-preview">
-                        <img src="assets/screenshots/minimal-music.png" alt="Minimal Music form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/minimal-music-400.webp 400w, assets/screenshots/minimal-music-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/minimal-music.png" width="1200" height="900" decoding="async" alt="Minimal Music form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Minimal Music</h3>
@@ -590,14 +867,21 @@
                         <li>Music platform ready</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/minimal-music/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/minimal-music/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="minimal-music" aria-label="Preview Minimal Music" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/minimal-music.zip" class="btn btn-secondary" download aria-label="Download Minimal Music ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/minimal-music/index.html">Open demo</a>
+                        <a href="forms/minimal-music/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="travel-booking">
                     <div class="form-preview">
-                        <img src="assets/screenshots/travel-booking.png" alt="Travel Booking form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/travel-booking-400.webp 400w, assets/screenshots/travel-booking-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/travel-booking.png" width="1200" height="900" decoding="async" alt="Travel Booking form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Travel Booking</h3>
@@ -610,14 +894,21 @@
                         <li>Travel platform ready</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/travel-booking/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/travel-booking/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="travel-booking" aria-label="Preview Travel Booking" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/travel-booking.zip" class="btn btn-secondary" download aria-label="Download Travel Booking ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/travel-booking/index.html">Open demo</a>
+                        <a href="forms/travel-booking/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="clean-banking">
                     <div class="form-preview">
-                        <img src="assets/screenshots/clean-banking.png" alt="Clean Banking form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/clean-banking-400.webp 400w, assets/screenshots/clean-banking-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/clean-banking.png" width="1200" height="900" decoding="async" alt="Clean Banking form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Clean Banking</h3>
@@ -630,14 +921,21 @@
                         <li>Financial platform ready</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/clean-banking/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/clean-banking/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="clean-banking" aria-label="Preview Clean Banking" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/clean-banking.zip" class="btn btn-secondary" download aria-label="Download Clean Banking ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/clean-banking/index.html">Open demo</a>
+                        <a href="forms/clean-banking/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="modern-saas">
                     <div class="form-preview">
-                        <img src="assets/screenshots/modern-saas.png" alt="Modern SaaS form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/modern-saas-400.webp 400w, assets/screenshots/modern-saas-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/modern-saas.png" width="1200" height="900" decoding="async" alt="Modern SaaS form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Modern SaaS</h3>
@@ -650,14 +948,21 @@
                         <li>Payment-ready design</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/modern-saas/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/modern-saas/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="modern-saas" aria-label="Preview Modern SaaS" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/modern-saas.zip" class="btn btn-secondary" download aria-label="Download Modern SaaS ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/modern-saas/index.html">Open demo</a>
+                        <a href="forms/modern-saas/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="elegant-portfolio">
                     <div class="form-preview">
-                        <img src="assets/screenshots/elegant-portfolio.png" alt="Elegant Portfolio form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/elegant-portfolio-400.webp 400w, assets/screenshots/elegant-portfolio-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/elegant-portfolio.png" width="1200" height="900" decoding="async" alt="Elegant Portfolio form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Elegant Portfolio</h3>
@@ -670,21 +975,28 @@
                         <li>Portfolio platform ready</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/elegant-portfolio/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/elegant-portfolio/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="elegant-portfolio" aria-label="Preview Elegant Portfolio" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/elegant-portfolio.zip" class="btn btn-secondary" download aria-label="Download Elegant Portfolio ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/elegant-portfolio/index.html">Open demo</a>
+                        <a href="forms/elegant-portfolio/README.md">Documentation</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="category">
+        <section class="category" data-category="creative" data-label="Creative & Artistic">
             <h2 class="category-title">🎨 Creative & Artistic</h2>
             <p class="category-description">Unique, interactive forms designed for creative professionals and artistic platforms.</p>
             
             <div class="forms-grid">
-                <div class="form-card">
+                <div class="form-card" data-slug="creative">
                     <div class="form-preview">
-                        <img src="assets/screenshots/creative.png" alt="Creative Portal form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/creative-400.webp 400w, assets/screenshots/creative-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/creative.png" width="1200" height="900" decoding="async" alt="Creative Portal form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Creative Portal</h3>
@@ -697,14 +1009,21 @@
                         <li>Behance & Dribbble integration</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/creative/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/creative/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="creative" aria-label="Preview Creative Portal" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/creative.zip" class="btn btn-secondary" download aria-label="Download Creative Portal ZIP">Download ZIP</a>
+                    </div>
+                    <div class="form-links">
+                        <a href="forms/creative/index.html">Open demo</a>
+                        <a href="forms/creative/README.md">Documentation</a>
                     </div>
                 </div>
 
-                <div class="form-card">
+                <div class="form-card" data-slug="brutalist">
                     <div class="form-preview">
-                        <img src="assets/screenshots/brutalist.png" alt="Brutalist form preview" loading="lazy">
+                        <picture>
+                            <source type="image/webp" srcset="assets/screenshots/brutalist-400.webp 400w, assets/screenshots/brutalist-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px">
+                            <img src="assets/screenshots/brutalist.png" width="1200" height="900" decoding="async" alt="Brutalist form preview" loading="lazy">
+                        </picture>
                     </div>
                     <span class="status-badge status-ready">Ready</span>
                     <h3 class="form-title">Brutalist</h3>
@@ -717,9 +1036,200 @@
                         <li>Refined simplicity</li>
                     </ul>
                     <div class="form-actions">
-                        <a href="forms/brutalist/index.html" class="btn btn-primary">View Demo</a>
-                        <a href="forms/brutalist/README.md" class="btn btn-secondary">Documentation</a>
+                        <button type="button" class="btn btn-primary" data-preview="brutalist" aria-label="Preview Brutalist" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button>
+                        <a href="downloads/brutalist.zip" class="btn btn-secondary" download aria-label="Download Brutalist ZIP">Download ZIP</a>
                     </div>
+                    <div class="form-links">
+                        <a href="forms/brutalist/index.html">Open demo</a>
+                        <a href="forms/brutalist/README.md">Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category" data-category="design-studies" data-label="Design Studies">
+            <h2 class="category-title">Design Studies / 20 new directions</h2>
+            <p class="category-description">Editorial grids, sculptural objects, field journals, music desks, and gallery walls. Original compositions informed by contemporary design studios.</p>
+            <div class="forms-grid">
+                <div class="form-card" data-slug="folio-editorial">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/folio-editorial-400.webp 400w, assets/screenshots/folio-editorial-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/folio-editorial.png" width="1200" height="900" decoding="async" alt="Folio Editorial form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Folio Editorial</h3>
+                    <p class="form-description">Editorial membership portal with a narrow ink rail, oversized serif type, and a numbered issue stamp.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="folio-editorial" aria-label="Preview Folio Editorial" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/folio-editorial.zip" class="btn btn-secondary" download aria-label="Download Folio Editorial ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/folio-editorial/index.html">Open demo</a><a href="forms/folio-editorial/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="swiss-grid">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/swiss-grid-400.webp 400w, assets/screenshots/swiss-grid-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/swiss-grid.png" width="1200" height="981" decoding="async" alt="Swiss Grid form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Swiss Grid</h3>
+                    <p class="form-description">A vermilion Swiss poster, strict numbered rules, compressed headlines, and an open form column.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="swiss-grid" aria-label="Preview Swiss Grid" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/swiss-grid.zip" class="btn btn-secondary" download aria-label="Download Swiss Grid ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/swiss-grid/index.html">Open demo</a><a href="forms/swiss-grid/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="architect-blueprint">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/architect-blueprint-400.webp 400w, assets/screenshots/architect-blueprint-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/architect-blueprint.png" width="1200" height="900" decoding="async" alt="Architecture Blueprint form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Architecture Blueprint</h3>
+                    <p class="form-description">Architectural drawing sheet with a measured cobalt grid, elevation lines, and a technical sidebar.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="architect-blueprint" aria-label="Preview Architecture Blueprint" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/architect-blueprint.zip" class="btn btn-secondary" download aria-label="Download Architecture Blueprint ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/architect-blueprint/index.html">Open demo</a><a href="forms/architect-blueprint/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="ceramic-studio">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/ceramic-studio-400.webp 400w, assets/screenshots/ceramic-studio-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/ceramic-studio.png" width="1200" height="900" decoding="async" alt="Ceramic Studio form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Ceramic Studio</h3>
+                    <p class="form-description">An earthy ceramics studio with a sculptural vessel still life and quiet, rounded authentication fields.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="ceramic-studio" aria-label="Preview Ceramic Studio" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/ceramic-studio.zip" class="btn btn-secondary" download aria-label="Download Ceramic Studio ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/ceramic-studio/index.html">Open demo</a><a href="forms/ceramic-studio/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="film-darkroom">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/film-darkroom-400.webp 400w, assets/screenshots/film-darkroom-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/film-darkroom.png" width="1200" height="900" decoding="async" alt="Film Darkroom form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Film Darkroom</h3>
+                    <p class="form-description">A photographic darkroom with a perforated film strip, abstract exposures, amber contact-sheet labels, and a dark form.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="film-darkroom" aria-label="Preview Film Darkroom" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/film-darkroom.zip" class="btn btn-secondary" download aria-label="Download Film Darkroom ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/film-darkroom/index.html">Open demo</a><a href="forms/film-darkroom/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="botanical-index">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/botanical-index-400.webp 400w, assets/screenshots/botanical-index-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/botanical-index.png" width="1200" height="900" decoding="async" alt="Botanical Index form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Botanical Index</h3>
+                    <p class="form-description">An olive specimen catalogue with oversized botanical linework, inventory labels, and an airy off-white form.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="botanical-index" aria-label="Preview Botanical Index" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/botanical-index.zip" class="btn btn-secondary" download aria-label="Download Botanical Index ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/botanical-index/index.html">Open demo</a><a href="forms/botanical-index/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="audio-console">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/audio-console-400.webp 400w, assets/screenshots/audio-console-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/audio-console.png" width="1200" height="900" decoding="async" alt="Audio Console form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Audio Console</h3>
+                    <p class="form-description">A mint-on-charcoal recording desk with stereo meters, physical faders, and a studio access panel.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="audio-console" aria-label="Preview Audio Console" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/audio-console.zip" class="btn btn-secondary" download aria-label="Download Audio Console ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/audio-console/index.html">Open demo</a><a href="forms/audio-console/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="museum-ticket">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/museum-ticket-400.webp 400w, assets/screenshots/museum-ticket-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/museum-ticket.png" width="1200" height="948" decoding="async" alt="Museum Ticket form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Museum Ticket</h3>
+                    <p class="form-description">A ticket-shaped access panel with a perforated seam, exhibition typography, and a large abstract exhibition print.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="museum-ticket" aria-label="Preview Museum Ticket" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/museum-ticket.zip" class="btn btn-secondary" download aria-label="Download Museum Ticket ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/museum-ticket/index.html">Open demo</a><a href="forms/museum-ticket/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="atelier-fashion">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/atelier-fashion-400.webp 400w, assets/screenshots/atelier-fashion-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/atelier-fashion.png" width="1200" height="900" decoding="async" alt="Atelier Fashion form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Atelier Fashion</h3>
+                    <p class="form-description">A fashion house invitation with plum paper, expressive serif type, an abstract folded garment, and a spare cream form.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="atelier-fashion" aria-label="Preview Atelier Fashion" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/atelier-fashion.zip" class="btn btn-secondary" download aria-label="Download Atelier Fashion ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/atelier-fashion/index.html">Open demo</a><a href="forms/atelier-fashion/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="cobalt-orbit">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/cobalt-orbit-400.webp 400w, assets/screenshots/cobalt-orbit-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/cobalt-orbit.png" width="1200" height="900" decoding="async" alt="Cobalt Orbit form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Cobalt Orbit</h3>
+                    <p class="form-description">A cobalt orbital diagram wraps a circular brand field, paired with a crisp floating authentication panel.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="cobalt-orbit" aria-label="Preview Cobalt Orbit" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/cobalt-orbit.zip" class="btn btn-secondary" download aria-label="Download Cobalt Orbit ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/cobalt-orbit/index.html">Open demo</a><a href="forms/cobalt-orbit/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="terrace-travel">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/terrace-travel-400.webp 400w, assets/screenshots/terrace-travel-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/terrace-travel.png" width="1200" height="900" decoding="async" alt="Terrace Travel form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Terrace Travel</h3>
+                    <p class="form-description">A warm Mediterranean landscape with stepped terraces, an oversized sun, and a passport-like inset form.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="terrace-travel" aria-label="Preview Terrace Travel" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/terrace-travel.zip" class="btn btn-secondary" download aria-label="Download Terrace Travel ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/terrace-travel/index.html">Open demo</a><a href="forms/terrace-travel/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="terminal-cloud">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/terminal-cloud-400.webp 400w, assets/screenshots/terminal-cloud-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/terminal-cloud.png" width="1200" height="900" decoding="async" alt="Terminal Cloud form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Terminal Cloud</h3>
+                    <p class="form-description">A developer workbench with a real-looking static command transcript, status dots, and a compact cloud access panel.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="terminal-cloud" aria-label="Preview Terminal Cloud" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/terminal-cloud.zip" class="btn btn-secondary" download aria-label="Download Terminal Cloud ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/terminal-cloud/index.html">Open demo</a><a href="forms/terminal-cloud/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="paper-notes">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/paper-notes-400.webp 400w, assets/screenshots/paper-notes-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/paper-notes.png" width="1200" height="900" decoding="async" alt="Paper Notes form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Paper Notes</h3>
+                    <p class="form-description">A ruled paper desk with layered notes, a hand-drawn loop, and a lemon-yellow writing pad for the form.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="paper-notes" aria-label="Preview Paper Notes" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/paper-notes.zip" class="btn btn-secondary" download aria-label="Download Paper Notes ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/paper-notes/index.html">Open demo</a><a href="forms/paper-notes/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="racing-paddock">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/racing-paddock-400.webp 400w, assets/screenshots/racing-paddock-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/racing-paddock.png" width="1200" height="900" decoding="async" alt="Racing Paddock form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Racing Paddock</h3>
+                    <p class="form-description">Motorsport timing-board typography, an oversized racing number, a checkered finish band, and sharp edged controls.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="racing-paddock" aria-label="Preview Racing Paddock" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/racing-paddock.zip" class="btn btn-secondary" download aria-label="Download Racing Paddock ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/racing-paddock/index.html">Open demo</a><a href="forms/racing-paddock/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="bauhaus-workshop">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/bauhaus-workshop-400.webp 400w, assets/screenshots/bauhaus-workshop-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/bauhaus-workshop.png" width="1200" height="1023" decoding="async" alt="Bauhaus Workshop form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Bauhaus Workshop</h3>
+                    <p class="form-description">A primary-color workshop of geometric tiles with a freestanding form and deliberate asymmetry.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="bauhaus-workshop" aria-label="Preview Bauhaus Workshop" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/bauhaus-workshop.zip" class="btn btn-secondary" download aria-label="Download Bauhaus Workshop ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/bauhaus-workshop/index.html">Open demo</a><a href="forms/bauhaus-workshop/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="mono-journal">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/mono-journal-400.webp 400w, assets/screenshots/mono-journal-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/mono-journal.png" width="1200" height="944" decoding="async" alt="Mono Journal form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Mono Journal</h3>
+                    <p class="form-description">A full-width newspaper masthead, oversized issue number, editorial columns, and a reader access form.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="mono-journal" aria-label="Preview Mono Journal" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/mono-journal.zip" class="btn btn-secondary" download aria-label="Download Mono Journal ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/mono-journal/index.html">Open demo</a><a href="forms/mono-journal/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="gallery-frame">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/gallery-frame-400.webp 400w, assets/screenshots/gallery-frame-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/gallery-frame.png" width="1200" height="900" decoding="async" alt="Gallery Frame form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Gallery Frame</h3>
+                    <p class="form-description">An art-gallery wall with a floating framed color study, exhibition captions, and a cool white access column.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="gallery-frame" aria-label="Preview Gallery Frame" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/gallery-frame.zip" class="btn btn-secondary" download aria-label="Download Gallery Frame ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/gallery-frame/index.html">Open demo</a><a href="forms/gallery-frame/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="terra-maps">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/terra-maps-400.webp 400w, assets/screenshots/terra-maps-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/terra-maps.png" width="1200" height="900" decoding="async" alt="Terra Maps form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Terra Maps</h3>
+                    <p class="form-description">A field journal with contour-map linework, a waypoint marker, and a sand-colored inset expedition form.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="terra-maps" aria-label="Preview Terra Maps" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/terra-maps.zip" class="btn btn-secondary" download aria-label="Download Terra Maps ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/terra-maps/index.html">Open demo</a><a href="forms/terra-maps/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="citrus-market">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/citrus-market-400.webp 400w, assets/screenshots/citrus-market-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/citrus-market.png" width="1200" height="900" decoding="async" alt="Citrus Market form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Citrus Market</h3>
+                    <p class="form-description">A neighborhood market with hand-cut citrus shapes, a green checkered tablecloth, and a receipt-style login.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="citrus-market" aria-label="Preview Citrus Market" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/citrus-market.zip" class="btn btn-secondary" download aria-label="Download Citrus Market ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/citrus-market/index.html">Open demo</a><a href="forms/citrus-market/README.md">Documentation</a></div>
+                </div>
+                <div class="form-card" data-slug="kinetic-type">
+                    <div class="form-preview"><picture><source type="image/webp" srcset="assets/screenshots/kinetic-type-400.webp 400w, assets/screenshots/kinetic-type-800.webp 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 795px) calc(100vw - 64px), (max-width: 1177px) calc((100vw - 96px) / 2), 380px"><img src="assets/screenshots/kinetic-type.png" width="1200" height="900" decoding="async" alt="Kinetic Type form preview" loading="lazy"></picture></div>
+                    <span class="status-badge status-ready">Ready</span>
+                    <h3 class="form-title">Kinetic Type</h3>
+                    <p class="form-description">A saturated pink type specimen with offset oversized letterforms, a red margin rail, and a compact off-white form.</p>
+                    <ul class="form-features"><li>Original CSS / SVG artwork</li><li>Four matching account screens</li><li>Accessible shared validation</li><li>Offline standalone package</li></ul>
+                    <div class="form-actions"><button type="button" class="btn btn-primary" data-preview="kinetic-type" aria-label="Preview Kinetic Type" aria-haspopup="dialog" aria-controls="form-preview-dialog" hidden>Live preview</button><a href="downloads/kinetic-type.zip" class="btn btn-secondary" download aria-label="Download Kinetic Type ZIP">Download ZIP</a></div>
+                    <div class="form-links"><a href="forms/kinetic-type/index.html">Open demo</a><a href="forms/kinetic-type/README.md">Documentation</a></div>
                 </div>
             </div>
         </section>
@@ -730,5 +1240,53 @@
             <p>Created by <a href="https://github.com/puikinsh/" style="color: var(--primary-color); text-decoration: none;">Aigars Silkalns</a> for <a href="https://colorlib.com" style="color: var(--primary-color); text-decoration: none;">Colorlib</a></p>
         </footer>
     </div>
+    <dialog id="form-preview-dialog" aria-labelledby="preview-title" aria-describedby="preview-help">
+        <div class="preview-header">
+            <h2 id="preview-title" tabindex="-1">Form preview</h2>
+            <div class="preview-header-actions">
+                <button type="button" class="btn btn-secondary" id="copy-preview-link">Copy link</button>
+                <button type="button" class="btn btn-secondary" id="close-preview" aria-label="Close preview">Close</button>
+            </div>
+        </div>
+        <div class="comparison-controls">
+            <div><label for="preview-form">First form</label><select id="preview-form" aria-controls="preview-frame"></select></div>
+            <div><label for="compare-form">Compare with</label><select id="compare-form" aria-controls="secondary-preview-pane"><option value="">No comparison</option></select></div>
+        </div>
+        <div class="preview-controls">
+            <div class="screen-switch">
+                <label for="preview-screen">Screen</label>
+                <select id="preview-screen" aria-controls="preview-frame">
+                    <option value="signin">Sign in</option>
+                    <option value="signup">Sign up</option>
+                    <option value="request-reset">Reset password</option>
+                    <option value="new-password">New password</option>
+                </select>
+            </div>
+            <div class="device-switch" role="group" aria-label="Preview device">
+                <button type="button" class="btn" data-device="desktop" aria-pressed="true">Desktop</button>
+                <button type="button" class="btn" data-device="mobile" aria-pressed="false">Mobile</button>
+            </div>
+            <span id="preview-dimensions">1100 × 800</span>
+            <a class="btn btn-secondary" id="preview-download" download>Download ZIP</a>
+        </div>
+        <div id="preview-share-fallback" hidden>
+            <label for="preview-link">Preview link</label>
+            <input id="preview-link" type="url" readonly spellcheck="false">
+        </div>
+        <p id="preview-help">All 40 original and newer designs are available; favorites come first. Demo only: no accounts, emails, or password changes. Resizing keeps values; switching screens starts fresh. <span id="comparison-help" hidden>Scroll sideways to compare both forms on narrow screens.</span><span id="preview-status" role="status" aria-atomic="true"></span></p>
+        <div class="preview-stage" tabindex="0" role="region" aria-label="Preview screen">
+            <div class="preview-panes">
+                <section class="preview-pane" id="primary-preview-pane" aria-labelledby="primary-pane-title">
+                    <div class="preview-pane-header" hidden><h3 id="primary-pane-title">First form</h3><a class="btn btn-secondary" id="primary-pane-download" download>Download ZIP</a></div>
+                    <div class="preview-canvas"><iframe id="preview-frame" title="Login form preview"></iframe></div>
+                </section>
+                <section class="preview-pane" id="secondary-preview-pane" aria-labelledby="secondary-pane-title" hidden>
+                    <div class="preview-pane-header"><h3 id="secondary-pane-title">Second form</h3><a class="btn btn-secondary" id="secondary-pane-download" download>Download ZIP</a></div>
+                    <div class="preview-canvas"></div>
+                </section>
+            </div>
+        </div>
+    </dialog>
+    <script src="assets/js/gallery.js" defer></script>
 </body>
 </html>

@@ -75,7 +75,8 @@ body {
 }
 
 .input-wrapper input:focus + label,
-.input-wrapper input:valid + label {
+.input-wrapper input:valid + label,
+.input-wrapper input.has-value + label {
     transform: translateY(-8px) scale(0.85);
     color: #06b6d4;
     font-weight: 500;
@@ -208,7 +209,12 @@ body {
 }
 
 .remember-wrapper input[type="checkbox"] {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
 }
 
 .checkbox-label {
@@ -600,4 +606,74 @@ body {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+/* Preserve native keyboard operation behind each custom checkbox. */
+input[type="checkbox"]:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+.form-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+button:disabled {
+    cursor: wait;
+}
+
+/* Companion authentication screens reuse this design without runtime dependencies. */
+.auth-demo, .auth-help, .auth-navigation {
+    color: var(--auth-copy, #334155);
+    background: var(--auth-surface, #f8fafc);
+    border: 1px solid var(--auth-border, #cbd5e1);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 16px 0;
+    font: 400 13px/1.6 system-ui, sans-serif;
+    text-align: left;
+    letter-spacing: normal;
+    text-transform: none;
+    overflow-wrap: anywhere;
+}
+.auth-help { margin: 8px 0 20px; padding: 8px 12px; }
+.auth-navigation { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 0; border: 0; background: none; }
+.auth-navigation a { color: var(--auth-link, #1e40af); text-decoration: underline; padding: 4px 0; }
+.auth-navigation a:focus-visible { outline: 3px solid var(--auth-link, #1e40af); outline-offset: 3px; }
+body.auth-screen { min-height: 100dvh; height: auto; overflow: auto; }
+.auth-screen h1, .auth-screen h2 { font-size: clamp(24px, 6vw, 32px); overflow-wrap: anywhere; }
+.auth-screen #successMessage p { white-space: normal; }
+
+.auth-screen { --auth-link: #fff; }
+
+/* Validation text occupies its own lines and expands the document naturally. */
+body { height: auto; min-height: 100dvh; overflow-y: auto; }
+form [id$="Error"] {
+    display: block;
+    position: static;
+    max-width: 100%;
+    margin: 6px 0 0;
+    line-height: 1.5;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    transform: none;
+}
+form [id$="Error"]:empty { display: none; }
+.field-control { position: relative; }
+
+/* Reserve separate lines for inset labels and typed values. */
+.input-wrapper input:not([type="checkbox"]) { padding-top: 28px; padding-bottom: 10px; }
+.input-wrapper input:focus + label,
+.input-wrapper input.has-value + label,
+.input-wrapper input:not(:placeholder-shown) + label {
+    top: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    transform: none;
 }

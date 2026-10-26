@@ -33,23 +33,27 @@
                 <p>Welcome back! Please sign in to continue</p>
             </div>
             
-            <form class="login-form" id="loginForm" novalidate>
+            <form class="login-form" id="loginForm" method="post" novalidate>
                 <div class="input-group">
-                    <input type="email" id="email" name="email" required autocomplete="email" placeholder=" ">
+                    <div class="field-control">
+                    <input type="email" id="email" name="email" required autocomplete="username" placeholder=" " aria-describedby="emailError" autocapitalize="none" spellcheck="false">
                     <label for="email">Email address</label>
                     <span class="input-border"></span>
+                    </div>
                     <span class="error-message" id="emailError"></span>
                 </div>
 
                 <div class="input-group">
-                    <input type="password" id="password" name="password" required autocomplete="current-password" placeholder=" ">
+                    <div class="field-control">
+                    <input type="password" id="password" name="password" required autocomplete="current-password" placeholder=" " aria-describedby="passwordError">
                     <label for="password">Password</label>
-                    <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                    <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
                         <svg class="eye-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <path d="M8 3C4.5 3 1.6 5.6 1 8c.6 2.4 3.5 5 7 5s6.4-2.6 7-5c-.6-2.4-3.5-5-7-5zm0 8.5A3.5 3.5 0 118 4.5a3.5 3.5 0 010 7zm0-5.5a2 2 0 100 4 2 2 0 000-4z" fill="currentColor"/>
                         </svg>
                     </button>
                     <span class="input-border"></span>
+                    </div>
                     <span class="error-message" id="passwordError"></span>
                 </div>
 
@@ -63,7 +67,7 @@
                         </span>
                         Remember me
                     </label>
-                    <a href="#" class="forgot-link">Forgot password?</a>
+                    <a href="reset-password.html" class="forgot-link" data-action="forgot-password">Forgot password?</a>
                 </div>
 
                 <button type="submit" class="submit-btn">
@@ -84,7 +88,7 @@
             </div>
 
             <div class="social-buttons">
-                <button type="button" class="social-btn">
+                <button type="button" class="social-btn" data-action="social" data-provider="Google">
                     <svg width="16" height="16" viewBox="0 0 16 16">
                         <path fill="#4285F4" d="M14.9 8.161c0-.476-.039-.954-.118-1.421H8.021v2.681h3.833a3.321 3.321 0 01-1.431 2.161v1.785h2.3c1.349-1.25 2.177-3.103 2.177-5.206z"/>
                         <path fill="#34A853" d="M8.021 15c1.951 0 3.57-.65 4.761-1.754l-2.3-1.785c-.653.447-1.477.707-2.461.707-1.887 0-3.487-1.274-4.057-2.991H1.617V11.1C2.8 13.481 5.282 15 8.021 15z"/>
@@ -94,7 +98,7 @@
                     Google
                 </button>
                 
-                <button type="button" class="social-btn">
+                <button type="button" class="social-btn" data-action="social" data-provider="GitHub">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="#000000">
                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
                     </svg>
@@ -104,10 +108,10 @@
 
             <div class="signup-link">
                 <span>Don't have an account? </span>
-                <a href="#">Start your free trial</a>
+                <a href="sign-up.html" data-action="signup">Start your free trial</a>
             </div>
 
-            <div class="success-message" id="successMessage">
+            <div class="success-message" id="successMessage" tabindex="-1">
                 <div class="success-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <circle cx="12" cy="12" r="12" fill="#635BFF"/>
@@ -115,7 +119,7 @@
                     </svg>
                 </div>
                 <h3>Welcome back!</h3>
-                <p>Redirecting to your dashboard...</p>
+                <p>Sign-in demo complete. No session was created and no redirect will occur.</p>
             </div>
         </div>
     </div>

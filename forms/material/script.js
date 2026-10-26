@@ -4,18 +4,11 @@ class MaterialLoginForm extends FormUtils.LoginFormBase {
         super({
             submitButtonSelector: '.material-btn',
             hideOnSuccess: ['.social-login', '.signup-link'],
-            validators: {
-                email: FormUtils.validateEmail,
-                password: (value) => {
-                    if (!value) return { isValid: false, message: 'Password is required' };
-                    if (value.length < 6) return { isValid: false, message: 'Password must be at least 6 characters' };
-                    return { isValid: true };
-                },
-            },
         });
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         this.injectKeyframes();
         this.setupRipples();
     }
@@ -32,6 +25,7 @@ class MaterialLoginForm extends FormUtils.LoginFormBase {
     }
 
     createRipple(event, container) {
+        if (FormUtils.prefersReducedMotion()) return;
         if (!container) return;
         const rect = container.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
@@ -95,10 +89,10 @@ class MaterialLoginForm extends FormUtils.LoginFormBase {
         setTimeout(() => {
             this.form.style.display = 'none';
             ['.social-login', '.signup-link'].forEach(sel => {
-                const el = document.querySelector(sel);
+                const el = this.root.querySelector(sel);
                 if (el) el.style.display = 'none';
             });
-            this.successMessage?.classList.add('show');
+            this.revealSuccess();
             const successIcon = this.successMessage?.querySelector('.success-icon');
             if (successIcon) successIcon.style.animation = 'materialSuccessScale 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)';
         }, 300);

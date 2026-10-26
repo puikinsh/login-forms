@@ -5,22 +5,11 @@ class EcoWellnessLoginForm extends FormUtils.LoginFormBase {
             submitButtonSelector: '.harmony-button',
             formGroupSelector: '.organic-field',
             hideOnSuccess: ['.natural-social', '.nurture-signup', '.balance-divider'],
-            validators: {
-                email: (v) => {
-                    if (!v) return { isValid: false, message: 'Your email helps us connect with you mindfully' };
-                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return { isValid: false, message: 'Please share a valid email address' };
-                    return { isValid: true };
-                },
-                password: (v) => {
-                    if (!v) return { isValid: false, message: 'Your sanctuary needs a protective key' };
-                    if (v.length < 6) return { isValid: false, message: 'Please choose a stronger protection (6+ characters)' };
-                    return { isValid: true };
-                },
-            },
         });
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         if (!document.getElementById('wellness-keyframes')) {
             const style = document.createElement('style');
             style.id = 'wellness-keyframes';

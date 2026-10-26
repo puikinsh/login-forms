@@ -6,18 +6,11 @@ class SoftMinimalismLoginForm extends FormUtils.LoginFormBase {
             formGroupSelector: '.soft-field',
             cardSelector: '.soft-card',
             hideOnSuccess: ['.comfort-social', '.comfort-signup', '.gentle-divider'],
-            validators: {
-                email: FormUtils.validateEmail,
-                password: (v) => {
-                    if (!v) return { isValid: false, message: 'Please enter your password' };
-                    if (v.length < 6) return { isValid: false, message: 'Password must be at least 6 characters' };
-                    return { isValid: true };
-                },
-            },
         });
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         // Soft hover lift on field containers
         [this.form.querySelector('#email'), this.form.querySelector('#password')].forEach(input => {
             if (!input) return;

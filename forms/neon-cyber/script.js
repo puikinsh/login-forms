@@ -6,22 +6,11 @@ class NeonCyberLoginForm extends FormUtils.LoginFormBase {
             formGroupSelector: '.cyber-field',
             cardSelector: '.cyber-terminal',
             hideOnSuccess: ['.matrix-social', '.matrix-signup', '.cyber-divider'],
-            validators: {
-                email: (v) => {
-                    if (!v) return { isValid: false, message: '[ ERROR: EMAIL_REQUIRED ]' };
-                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return { isValid: false, message: '[ ERROR: INVALID_FORMAT ]' };
-                    return { isValid: true };
-                },
-                password: (v) => {
-                    if (!v) return { isValid: false, message: '[ ERROR: ACCESS_CODE_REQUIRED ]' };
-                    if (v.length < 6) return { isValid: false, message: '[ ERROR: CODE_TOO_SHORT ]' };
-                    return { isValid: true };
-                },
-            },
         });
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         if (!document.getElementById('neon-cyber-keyframes')) {
             const style = document.createElement('style');
             style.id = 'neon-cyber-keyframes';
@@ -56,6 +45,7 @@ class NeonCyberLoginForm extends FormUtils.LoginFormBase {
         if (titleGlitch) {
             let last = 0;
             const tick = (now) => {
+                if (FormUtils.prefersReducedMotion()) return;
                 if (!document.body.contains(titleGlitch)) return;
                 if (now - last > 2000) {
                     last = now;
@@ -83,10 +73,10 @@ class NeonCyberLoginForm extends FormUtils.LoginFormBase {
         setTimeout(() => {
             this.form.style.display = 'none';
             this.hideOnSuccess.forEach(sel => {
-                const el = document.querySelector(sel);
+                const el = this.root.querySelector(sel);
                 if (el) el.style.display = 'none';
             });
-            this.successMessage?.classList.add('show');
+            this.revealSuccess();
             setTimeout(() => {
                 const successTitle = document.querySelector('.success-title');
                 if (successTitle) {
