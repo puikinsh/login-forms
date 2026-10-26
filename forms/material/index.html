@@ -34,10 +34,10 @@
                 <p>to continue to your account</p>
             </div>
             
-            <form class="login-form" id="loginForm" novalidate>
+            <form class="login-form" id="loginForm" method="post" novalidate>
                 <div class="form-group">
                     <div class="input-wrapper">
-                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
                         <label for="email">Email</label>
                         <div class="input-line"></div>
                         <div class="ripple-container"></div>
@@ -47,10 +47,10 @@
 
                 <div class="form-group">
                     <div class="input-wrapper password-wrapper">
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                        <input type="password" id="password" name="password" required autocomplete="current-password" aria-describedby="passwordError" placeholder=" ">
                         <label for="password">Password</label>
                         <div class="input-line"></div>
-                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
                             <div class="toggle-ripple"></div>
                             <span class="toggle-icon"></span>
                         </button>
@@ -72,7 +72,7 @@
                             Keep me signed in
                         </label>
                     </div>
-                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <a href="reset-password.html" class="forgot-password" data-action="forgot-password">Forgot password?</a>
                 </div>
 
                 <button type="submit" class="login-btn material-btn">
@@ -91,7 +91,7 @@
             </div>
 
             <div class="social-login">
-                <button type="button" class="social-btn google-material">
+                <button type="button" class="social-btn google-material" data-action="social" data-provider="Google">
                     <div class="social-ripple"></div>
                     <div class="social-icon google-icon">
                         <svg viewBox="0 0 24 24">
@@ -104,7 +104,7 @@
                     <span>Continue with Google</span>
                 </button>
                 
-                <button type="button" class="social-btn facebook-material">
+                <button type="button" class="social-btn facebook-material" data-action="social" data-provider="Facebook">
                     <div class="social-ripple"></div>
                     <div class="social-icon facebook-icon">
                         <svg viewBox="0 0 24 24">
@@ -116,10 +116,10 @@
             </div>
 
             <div class="signup-link">
-                <p>Don't have an account? <a href="#" class="create-account">Create account</a></p>
+                <p>Don't have an account? <a href="sign-up.html" class="create-account" data-action="signup">Create account</a></p>
             </div>
 
-            <div class="success-message" id="successMessage">
+            <div class="success-message" id="successMessage" tabindex="-1">
                 <div class="success-elevation">
                     <div class="success-icon">
                         <svg viewBox="0 0 24 24">
@@ -127,7 +127,7 @@
                         </svg>
                     </div>
                     <h3>Welcome back!</h3>
-                    <p>Signing you in...</p>
+                    <p>Sign-in demo complete. No session was created and no redirect will occur.</p>
                 </div>
             </div>
         </div>

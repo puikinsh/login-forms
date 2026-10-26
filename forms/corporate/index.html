@@ -30,10 +30,10 @@
                 <p>Please sign in to your corporate account</p>
             </div>
             
-            <form class="login-form" id="loginForm" novalidate>
+            <form class="login-form" id="loginForm" method="post" novalidate>
                 <div class="form-group">
                     <div class="input-wrapper">
-                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
                         <label for="email">Business Email</label>
                         <span class="input-border"></span>
                     </div>
@@ -42,9 +42,9 @@
 
                 <div class="form-group">
                     <div class="input-wrapper password-wrapper">
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                        <input type="password" id="password" name="password" required autocomplete="current-password" aria-describedby="passwordError" placeholder=" ">
                         <label for="password">Password</label>
-                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
                             <span class="toggle-icon"></span>
                         </button>
                         <span class="input-border"></span>
@@ -60,7 +60,7 @@
                             Keep me signed in
                         </label>
                     </div>
-                    <a href="#" class="forgot-password">Reset password</a>
+                    <a href="reset-password.html" class="forgot-password" data-action="forgot-password">Reset password</a>
                 </div>
 
                 <button type="submit" class="login-btn">
@@ -74,11 +74,11 @@
             </div>
 
             <div class="sso-options">
-                <button type="button" class="sso-btn azure-btn">
+                <button type="button" class="sso-btn azure-btn" data-action="social" data-provider="Microsoft">
                     <span class="sso-icon azure-icon"></span>
                     <span>Microsoft Azure AD</span>
                 </button>
-                <button type="button" class="sso-btn okta-btn">
+                <button type="button" class="sso-btn okta-btn" data-action="social" data-provider="Okta">
                     <span class="sso-icon okta-icon"></span>
                     <span>Okta</span>
                 </button>
@@ -92,10 +92,11 @@
                 <a href="#" class="footer-link">Support</a>
             </div>
 
-            <div class="success-message" id="successMessage">
+            <nav class="auth-navigation" aria-label="Account"><a href="sign-up.html" data-action="signup">Create account</a></nav>
+            <div class="success-message" id="successMessage" tabindex="-1">
                 <div class="success-icon">✓</div>
                 <h3>Authentication Successful</h3>
-                <p>Redirecting to your workspace...</p>
+                <p>Sign-in demo complete. No session was created and no redirect will occur.</p>
             </div>
         </div>
     </div>

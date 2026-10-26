@@ -49,10 +49,10 @@
                 <p class="gentle-subtitle">Sign in to your peaceful space</p>
             </div>
             
-            <form class="comfort-form" id="loginForm" novalidate>
+            <form class="comfort-form" id="loginForm" method="post" novalidate>
                 <div class="soft-field">
                     <div class="field-container">
-                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
                         <label for="email">Email address</label>
                         <div class="field-accent"></div>
                     </div>
@@ -61,9 +61,9 @@
 
                 <div class="soft-field">
                     <div class="field-container">
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                        <input type="password" id="password" name="password" required autocomplete="current-password" aria-describedby="passwordError" placeholder=" ">
                         <label for="password">Password</label>
-                        <button type="button" class="gentle-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                        <button type="button" class="gentle-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
                             <div class="toggle-icon">
                                 <svg class="eye-open" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M10 3c-4.5 0-8.3 3.8-9 7 .7 3.2 4.5 7 9 7s8.3-3.8 9-7c-.7-3.2-4.5-7-9-7z" stroke="currentColor" stroke-width="1.5" fill="none"/>
@@ -90,7 +90,7 @@
                         </span>
                         <span class="checkbox-text">Remember me</span>
                     </label>
-                    <a href="#" class="comfort-link">Forgot password?</a>
+                    <a href="reset-password.html" class="comfort-link" data-action="forgot-password">Forgot password?</a>
                 </div>
 
                 <button type="submit" class="comfort-button">
@@ -112,7 +112,7 @@
             </div>
 
             <div class="comfort-social">
-                <button type="button" class="social-soft">
+                <button type="button" class="social-soft" data-action="social" data-provider="Google">
                     <div class="social-background"></div>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <path d="M9 7.4v3.2h4.6c-.2 1-.8 1.8-1.6 2.4v2h2.6c1.5-1.4 2.4-3.4 2.4-5.8 0-.6 0-1.1-.1-1.6H9z" fill="#4285F4"/>
@@ -124,7 +124,7 @@
                     <div class="social-glow"></div>
                 </button>
                 
-                <button type="button" class="social-soft">
+                <button type="button" class="social-soft" data-action="social" data-provider="Facebook">
                     <div class="social-background"></div>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="#1877F2">
                         <path d="M18 9C18 4.03 13.97 0 9 0S0 4.03 0 9c0 4.49 3.29 8.21 7.59 9v-6.37H5.31V9h2.28V7.02c0-2.25 1.34-3.49 3.39-3.49.98 0 2.01.18 2.01.18v2.21h-1.13c-1.11 0-1.46.69-1.46 1.4V9h2.49l-.4 2.63H10.4V18C14.71 17.21 18 13.49 18 9z"/>
@@ -136,10 +136,10 @@
 
             <div class="comfort-signup">
                 <span class="signup-text">Don't have an account?</span>
-                <a href="#" class="comfort-link signup-link">Sign up</a>
+                <a href="sign-up.html" class="comfort-link signup-link" data-action="signup">Sign up</a>
             </div>
 
-            <div class="gentle-success" id="successMessage">
+            <div class="gentle-success" id="successMessage" tabindex="-1">
                 <div class="success-bloom">
                     <div class="bloom-rings">
                         <div class="bloom-ring ring-1"></div>
@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 <h3 class="success-title">Welcome!</h3>
-                <p class="success-desc">Taking you to your dashboard...</p>
+                <p class="success-desc">Sign-in demo complete. No session was created and no redirect will occur.</p>
             </div>
         </div>
     </div>

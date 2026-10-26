@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account — Elegant Portfolio</title>
+    <meta name="description" content="Create account. Choose an email and a new password. Demo only.">
+    <meta name="author" content="Aigars Silkalns / Colorlib">
+    <link rel="canonical" href="https://puikinsh.github.io/login-forms/forms/elegant-portfolio/sign-up.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%236366f1'/><text x='50' y='68' font-size='60' text-anchor='middle' fill='white' font-family='system-ui,sans-serif'>L</text></svg>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Create account. Choose an email and a new password. Demo only.">
+    <meta property="og:description" content="Create account. Choose an email and a new password. Demo only.">
+    <meta property="og:url" content="https://puikinsh.github.io/login-forms/forms/elegant-portfolio/sign-up.html">
+    <meta property="og:image" content="https://puikinsh.github.io/login-forms/assets/screenshots/elegant-portfolio.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Create account. Choose an email and a new password. Demo only.">
+    <meta name="twitter:description" content="Create account. Choose an email and a new password. Demo only.">
+    <meta name="twitter:image" content="https://puikinsh.github.io/login-forms/assets/screenshots/elegant-portfolio.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-screen">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="card-accent"></div>
+
+            <div class="login-header">
+                <div class="logo">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="24" fill="url(#gradient)"/>
+                        <path d="M18 30V18h12v12H18zm2-10v8h8v-8h-8z" fill="white"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FF6B6B"/>
+                                <stop offset="100%" stop-color="#4ECDC4"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h1>Create account</h1>
+                <p>Choose an email and a new password.</p>
+            </div>
+
+            <form class="login-form" id="loginForm" method="post" data-auth-flow="signup" novalidate>
+                <p class="auth-demo">Demo only. No account is created, no email is sent, and no password is changed. Nothing is saved. Try error@demo.com to preview a service error.</p>
+                <noscript><p class="auth-demo">Enable JavaScript to try this demo. The submit button stays disabled without it.</p></noscript>
+                <div class="form-field">
+                    <div class="field-control">
+                    <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
+                    <label for="email">Email Address</label>
+                    <div class="field-line"></div>
+                    </div>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-field">
+                    <div class="field-control">
+                    <input type="password" id="password" name="password" required autocomplete="new-password" aria-describedby="passwordHelp passwordError" placeholder=" ">
+                    <label for="password">Password</label>
+                    <button type="button" class="password-reveal" id="passwordToggle" aria-label="Show password" aria-pressed="false">
+                        <svg class="eye-show" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 4C5.5 4 1.7 7.3 1 10c.7 2.7 4.5 6 9 6s8.3-3.3 9-6c-.7-2.7-4.5-6-9-6zm0 10a4 4 0 110-8 4 4 0 010 8zm0-6a2 2 0 100 4 2 2 0 000-4z" fill="currentColor"/>
+                        </svg>
+                        <svg class="eye-hide" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 3l14 14m-7-7a2 2 0 01-2-2m2 2a2 2 0 002 2m-2-2v.01M10 6a4 4 0 014 4m-4-4a4 4 0 00-4 4m4-4V4m0 10v2m4-6c.7-2.7-3.3-6-8-6m8 6c-.7 2.7-4.5 6-9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="field-line"></div>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                <p class="auth-help" id="passwordHelp">Use at least 15 characters. Spaces and pasted passphrases are welcome. Do not use a real password in this demo.</p>
+
+
+
+                <button type="submit" disabled class="signin-button">
+                    <span class="button-text">Create demo account</span>
+                    <div class="button-loader">
+                        <div class="loader-circle"></div>
+                    </div>
+                </button>
+            </form>
+            <nav class="auth-navigation" aria-label="Account"><a href="index.html">Back to sign in</a><a href="reset-password.html">Reset password</a></nav>
+<div class="success-state" id="successMessage" tabindex="-1">
+                <div class="success-visual">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="20" fill="url(#successGradient)"/>
+                        <path d="M12 20l6 6 10-10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="successGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4ECDC4"/>
+                                <stop offset="100%" stop-color="#44A08D"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h3>Sign-up demo complete</h3>
+                <p>No account was created and no data was saved.</p>
+                <nav class="auth-navigation" aria-label="Next step"><a href="index.html">Back to sign in</a></nav>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/js/form-utils.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

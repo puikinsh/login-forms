@@ -1,0 +1,937 @@
+{
+  "profile": {
+    "viewport": {
+      "width": 1200,
+      "height": 900
+    },
+    "thumbnails": [
+      400,
+      800
+    ],
+    "quality": 82,
+    "smallQuality": 76,
+    "pngWidth": 1200
+  },
+  "forms": {
+    "ai-assistant": {
+      "inputHash": "a5d3a53c1c08baee8b7b2698c1cecc1a4593eb532de50a0ad5e8b6ce4499d4fa",
+      "files": {
+        "ai-assistant.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 29825,
+          "sha256": "cf2ab48781a156611e8489fd0451b1226ee7bec1b48b1fd91269cd80b04d4ee5"
+        },
+        "ai-assistant-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 2160,
+          "sha256": "5d26a338a0d9a2e3673d6d268b75031049482865dcfd2a61df3219fb96c6cce7"
+        },
+        "ai-assistant-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 7948,
+          "sha256": "63100fa06d53a1e2598dbf1836ca7e380b1b2443c414139e3529b7d682a89d90"
+        }
+      }
+    },
+    "architect-blueprint": {
+      "inputHash": "56603a77b9a79a5911db37c3682f27a1d54f9fcdb6aaaaa259c3dc4f00a33e24",
+      "files": {
+        "architect-blueprint.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 26155,
+          "sha256": "45f86afa55dcd90b0217734f7ea9d93b55a52c665e58a6d4fc9921a4688f08f0"
+        },
+        "architect-blueprint-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 5642,
+          "sha256": "b0bdd3fac0cc37ba15f69820fc46f76f85c00bbc310479f14af091d79ae55ab7"
+        },
+        "architect-blueprint-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 18640,
+          "sha256": "0211fcff74c7a6f8f27692a06573637b2a5062290b5c0850f38473013da60ece"
+        }
+      }
+    },
+    "atelier-fashion": {
+      "inputHash": "08ad196a44be064d1844f67d73e66156194de65dcbef8007167ef8b3f78c320b",
+      "files": {
+        "atelier-fashion.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 24764,
+          "sha256": "c726ee0f9e63de289213946c8f68a45991cbad007267cd83ba1ce07817d49de3"
+        },
+        "atelier-fashion-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 5406,
+          "sha256": "9ac9bc462483964d06a41140d3e58692c689661f9345ac61cc4c08d658f1631f"
+        },
+        "atelier-fashion-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 16548,
+          "sha256": "9c5adc80e27a0b2147adaebeedf16b6295e1b812bd3e3457d9c27443af45f261"
+        }
+      }
+    },
+    "audio-console": {
+      "inputHash": "ec1cafe5ec1f98285baa2f72cce64a4cb1a6b70339a28443330985e807d35a39",
+      "files": {
+        "audio-console.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 22661,
+          "sha256": "56b066a421a710c0dde5012827b5e2e0466151dbcb171c71517f02fbf5e4d945"
+        },
+        "audio-console-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 5716,
+          "sha256": "86b604920f80071d7d693d427077bd164c26cc6f136bda70518227728f4cde73"
+        },
+        "audio-console-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 16400,
+          "sha256": "0f081586a563a1e809f29d1bc70fa216d2a4b3a8f5ea9b351e4068a828ca5868"
+        }
+      }
+    },
+    "basic": {
+      "inputHash": "8cb273a9e2e890d99a8d9d713986c5acbf9bb9626f32fd3725d6088252c7087a",
+      "files": {
+        "basic.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 10563,
+          "sha256": "c8b748d0a84ba0c078689f2ba52f2fb15ea2409db66d2bb5fff64a0c329adf83"
+        },
+        "basic-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 1540,
+          "sha256": "c4339071ba2f1824dfdfaeaef2def6d19684678b871fff747eb8b210cbaaba97"
+        },
+        "basic-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 5470,
+          "sha256": "1a3fab2325ed635d58549c366d807732137f97582e9dab7c5405cd1338706ba0"
+        }
+      }
+    },
+    "bauhaus-workshop": {
+      "inputHash": "8a8f2780a4a3c5de5b86d1685d2316ebfc673629811d7278014030725eb1038b",
+      "files": {
+        "bauhaus-workshop.png": {
+          "width": 1200,
+          "height": 1023,
+          "bytes": 21621,
+          "sha256": "270519467b30e8a29dbd50fd5e065b347c600b3bdc6d39507b48f4f1aa5181d7"
+        },
+        "bauhaus-workshop-400.webp": {
+          "width": 400,
+          "height": 341,
+          "bytes": 5894,
+          "sha256": "6749e36d0ec92780b8bb4f50fc996053b04e34628ed47c971c3f5dc0ec6a920e"
+        },
+        "bauhaus-workshop-800.webp": {
+          "width": 800,
+          "height": 682,
+          "bytes": 16424,
+          "sha256": "f37579948cd30d4f725037add7d221b7064799ec18abdd247f944fc102623c7e"
+        }
+      }
+    },
+    "botanical-index": {
+      "inputHash": "9c9d899b840b3d6d5e9244320549178ff9145608b853f14f027852cdb7732208",
+      "files": {
+        "botanical-index.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 23878,
+          "sha256": "e227b535c5e4d6a29a307df5a98834e36cdf89b674738e5bd8ff75678d742644"
+        },
+        "botanical-index-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 4600,
+          "sha256": "a30ff89fc626b00d3afdee07304785dd0647c7269eb9f8a6ff7f9afc8c55a986"
+        },
+        "botanical-index-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 14756,
+          "sha256": "d876dd6c40cf43b8f1439c951027925e5a2d9beb3d8c1cdcc2f3a68a72d9e59e"
+        }
+      }
+    },
+    "brutalist": {
+      "inputHash": "89bad7495af05eb2b8edfd36aed7222f0928620f4f1325cfba78dd7573da8506",
+      "files": {
+        "brutalist.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 9116,
+          "sha256": "d88878b22535757382816d683a1f091521860a915383903461d58983aa44eed7"
+        },
+        "brutalist-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 2190,
+          "sha256": "52ea2219c28b51c70a38ce961331f74af2ede8615369dc3c680fa9496beaf327"
+        },
+        "brutalist-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 6140,
+          "sha256": "0295eb5d41fe41aa3b1b6d954c7dbe142da65a4440dd7457065aecd16a72d28d"
+        }
+      }
+    },
+    "ceramic-studio": {
+      "inputHash": "d368130fde3fa4a4f02249f957eded424c5663ce447d6fd75191099d858ce246",
+      "files": {
+        "ceramic-studio.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 25441,
+          "sha256": "2aa8a33982a318665a78197cd34b4ac17015bd248a8fcee458faafee4f3a7b56"
+        },
+        "ceramic-studio-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 5134,
+          "sha256": "eaa77a0b9b333b3fa89fc604fba35fbe1873b49baf3db8a47cca3dd63bdc83b3"
+        },
+        "ceramic-studio-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 15552,
+          "sha256": "616deb6f7c95627b96def03d2785e082fcf7b39397f071d7f64f8981f6d4e9f2"
+        }
+      }
+    },
+    "citrus-market": {
+      "inputHash": "030f99e94be29e0628174422e4d505384f9c48c6a25d9bfe83aa714a40f088df",
+      "files": {
+        "citrus-market.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 27544,
+          "sha256": "cb0c19adf869ddf55453e5a18886a7a0faf6f373cf5eb201a8515d237f2fd3a1"
+        },
+        "citrus-market-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 6308,
+          "sha256": "c6851217a3218eaad4135831260da0e06417fee3a07e3c67423f289876c442f9"
+        },
+        "citrus-market-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 18914,
+          "sha256": "a5b3512aaedda056591f6e7715157d2e5a45db7cb16df7fa8042176a8adfcf71"
+        }
+      }
+    },
+    "clean-banking": {
+      "inputHash": "7256bec40be6717be5cc8da73a97efd37c244159395bb0f609e11cf3f9f4755d",
+      "files": {
+        "clean-banking.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 27331,
+          "sha256": "aba8c71f0548a656ceba5fe272ab8081f0da177b8f2d388cada4360bf3b58a27"
+        },
+        "clean-banking-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 2032,
+          "sha256": "b61593ef8fdc6d960fe48aae45d0845f39052e13f1be9fbd4000895fb3c03b2f"
+        },
+        "clean-banking-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 6788,
+          "sha256": "ad9a5640881b56c79be6e19dc2a3a763b83144c4577b7a5cba2206bd4cb29de4"
+        }
+      }
+    },
+    "cobalt-orbit": {
+      "inputHash": "b453c3d23427ea07e5cd5760f8753c8da00b91b95d70d4e5c727bbe967bb5403",
+      "files": {
+        "cobalt-orbit.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 28465,
+          "sha256": "cf727260a19c932d3f552c0da348a6201e418cc99b26504a80b4242e7ff73449"
+        },
+        "cobalt-orbit-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 6568,
+          "sha256": "8ff622f32f5aa32928f84f60c99d82a0097c27f409a4b2d097ee62bef0013417"
+        },
+        "cobalt-orbit-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 20024,
+          "sha256": "f6a77cac1df803149c54eff2ee074111b774ab652b77b440cf0ee838bff4fec0"
+        }
+      }
+    },
+    "corporate": {
+      "inputHash": "d8a3d7294cf6ac5dfea3522b7280a4f3d25ea79f3f22c5d2dd02ace0a9ac219f",
+      "files": {
+        "corporate.png": {
+          "width": 1200,
+          "height": 923,
+          "bytes": 50224,
+          "sha256": "fac86d06a79905f7fc4c3be8ad3edbfacb91106d7a09b6344a23a2e53d649ef7"
+        },
+        "corporate-400.webp": {
+          "width": 400,
+          "height": 308,
+          "bytes": 3254,
+          "sha256": "d1e8463b2ffe7c19f70c041f12e194745e5956bbfd3de885c2bcab615236a4d8"
+        },
+        "corporate-800.webp": {
+          "width": 800,
+          "height": 615,
+          "bytes": 9904,
+          "sha256": "edf6b5be87b15ffa31f6a332cdd50ea8c49ff08505d2ffd5f55dd743931e38d7"
+        }
+      }
+    },
+    "creative": {
+      "inputHash": "c0d8c352a704962208c8500282829d7678ec15e337b2d98b8f12b4db25068a33",
+      "files": {
+        "creative.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 73822,
+          "sha256": "b2405a73436085d1566367ec860ac61bb6e7e893383a5ff6195a433fb845ba43"
+        },
+        "creative-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 3920,
+          "sha256": "a08422f12a2f5234547ad18d1b117a7825c477d646cf74e8f4765cf13a2a8283"
+        },
+        "creative-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 11636,
+          "sha256": "9242e12203edb9ccfaffc34df385ab2506cd973f93c57dd65e6c0373d8f87520"
+        }
+      }
+    },
+    "eco-wellness": {
+      "inputHash": "fc7a773a83f583d053ed5eee9dd59e08bed952aba7ec9a9916b8173287d7b1fa",
+      "files": {
+        "eco-wellness.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 75771,
+          "sha256": "3634741d43ff278c2d2ca433d4241145c234cd7ca26f85fd5e58269810871807"
+        },
+        "eco-wellness-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 2886,
+          "sha256": "56201285235ee7a7c8f1f91d9f61af67f5bdd77c060c09566736698b10b92dd8"
+        },
+        "eco-wellness-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 9790,
+          "sha256": "5adb19edcd51d21e90f1a7b31e643b5f482c63d7a5281d38a833000a6eaa0b9f"
+        }
+      }
+    },
+    "elegant-portfolio": {
+      "inputHash": "dae02b92145d73d1a73f3345ad330bc6435a44b8f8097517e0adff68474ecad6",
+      "files": {
+        "elegant-portfolio.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 65861,
+          "sha256": "ec737e643e0f7961ffba63dd7fcda9a1c43a670d640531dbbdaa3878bda68eae"
+        },
+        "elegant-portfolio-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 3070,
+          "sha256": "fe07fe105633c571c281a8a14409a2983d821a6ff9b13876a1b672b2abfc97ad"
+        },
+        "elegant-portfolio-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 9780,
+          "sha256": "899d086c2d03adf64bf5e4e8970fcf0c971b40972a81674416733052226540a5"
+        }
+      }
+    },
+    "film-darkroom": {
+      "inputHash": "bd886d85d2baed0de35d3c911f9030afd92d63f1da747f0369283ecb2464640f",
+      "files": {
+        "film-darkroom.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 30465,
+          "sha256": "26f6483e2346993105d4d65bef52dbbda8bc86e51bba351461724830734e963e"
+        },
+        "film-darkroom-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 6912,
+          "sha256": "3d3121ce899193cea7a12e372c79f669b02de530660740918a40a5e2679e2e5f"
+        },
+        "film-darkroom-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 19358,
+          "sha256": "5ad0e1035b2a3ce15f76bf28bd76a3eabaf6d6b95d8ac9c2e01975bf08e733f8"
+        }
+      }
+    },
+    "folio-editorial": {
+      "inputHash": "73c8aca746542af28f967b56974e4b2c90b3e4bb5850718e28d72a9be9746a7f",
+      "files": {
+        "folio-editorial.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 23857,
+          "sha256": "21240615645a5a11e9158a778e013389092473da67a961b5abbd1bcfed8b183b"
+        },
+        "folio-editorial-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 5920,
+          "sha256": "a5696d1518c3cc2dc9647b2dd703287e7780232aa1ef07283b83035527be3021"
+        },
+        "folio-editorial-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 18320,
+          "sha256": "344b4404332b062e7624964872c1695c552eca3af34e3ed4da20040ed89ec2bc"
+        }
+      }
+    },
+    "gallery-frame": {
+      "inputHash": "09022fbd2dcb8eab918b071f875409e1b7be84d91dcfb9e51b9ee11b5cc8f40d",
+      "files": {
+        "gallery-frame.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 26185,
+          "sha256": "60d877a7746d8290763226b470415eade0cb9e18c33676309d2f19a462391e57"
+        },
+        "gallery-frame-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 5614,
+          "sha256": "e280034030b7dac6b762224fbd5f36e5f637a101c139ff01b0ebf48ad77efa4d"
+        },
+        "gallery-frame-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 15770,
+          "sha256": "dbea1a13a45cd59e2c6e2bd358c470fdb9750a6cfa1b4f555a24af40f36b3e02"
+        }
+      }
+    },
+    "glassmorphism": {
+      "inputHash": "425672185dba650087570d6964497f1d1768d1eb69b5f78e1fbb27a800028fb5",
+      "files": {
+        "glassmorphism.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 67318,
+          "sha256": "1662d06c17894b67b1e981265e0d821ea60c7dcf85961c00e0589f4e59759a22"
+        },
+        "glassmorphism-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 2350,
+          "sha256": "023d55e78f8657b26f4a90a9a04af7802bfc80ef60ac699fb7b8b41e47f44ac4"
+        },
+        "glassmorphism-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 8054,
+          "sha256": "788c391b24ed4b8f6b44425b177ad73acbe3c6952a929d2f0f1a06258f9d1688"
+        }
+      }
+    },
+    "gradient-wave": {
+      "inputHash": "bc2f9bd7bc54278e98c3096272eb743355e4bd227cf8acbf017cb0b9d45e64b3",
+      "files": {
+        "gradient-wave.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 154798,
+          "sha256": "7fc7ebd1c5129f711a6398d0c99260f025ac497cdce635b637a358c7b4198aaa"
+        },
+        "gradient-wave-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 1946,
+          "sha256": "e986f21da0e7e062269f964560be836384167aad16e52b4e39140ab5c53f212c"
+        },
+        "gradient-wave-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 6986,
+          "sha256": "5f9e01f945583e28533559748580cef5abf7508795db984f7c74b935020de6c5"
+        }
+      }
+    },
+    "kinetic-type": {
+      "inputHash": "3fcfced3814585904e3602780de9d206625db3580c28bd163ce8560ec35c1050",
+      "files": {
+        "kinetic-type.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 27565,
+          "sha256": "cca3cff3907b4a0605778710d1503c5fa4c123cffb5c084aaf474357e382df17"
+        },
+        "kinetic-type-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 5534,
+          "sha256": "4fbf135120e7cc3212a4db6a237f7a9041ad2a49ffaf302af4e69565854b18ee"
+        },
+        "kinetic-type-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 16338,
+          "sha256": "f7e7bb4b43a3df900648dd2444586d42d8d30e4ca9ece8bfd55d1b9fdeb162f1"
+        }
+      }
+    },
+    "material": {
+      "inputHash": "cbf400034e4377ad8faa9d8657bf5ff19e92c8054b5d03fe05cc6be14c50d542",
+      "files": {
+        "material.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 13491,
+          "sha256": "1757d86d20731b6419f8393c09dae4ef3a19422d7ed5df5fdf99fe7516b154ff"
+        },
+        "material-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 2104,
+          "sha256": "997e32a02299613708457809dbcc8914c8d3f1b03e56f48dc6a5d3e6af3ad7be"
+        },
+        "material-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 6932,
+          "sha256": "10ad7df7c95a8656dccaa768db44baf143885ba3d495ea3af6620e26d9cd9147"
+        }
+      }
+    },
+    "minimal": {
+      "inputHash": "74d12501cc686043258f6892a732dffdfd51f8728a69b4d81dd97d72e456070c",
+      "files": {
+        "minimal.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 7563,
+          "sha256": "9d9d57efb9ecfc3aa23efc063856bce312bd66904eb0add717459244234794a5"
+        },
+        "minimal-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 1474,
+          "sha256": "dfbce2c05b47ce0bfb1296d51fed8ded942719ff01dbb5f32c5a584a9815e6f7"
+        },
+        "minimal-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 4740,
+          "sha256": "1b172d0d190e3a5f0f370c3790ca70d79d074210de35cfe319a71cd9ff99669a"
+        }
+      }
+    },
+    "minimal-music": {
+      "inputHash": "c5cdb4757ef370cc18bdf6bbfeaf0ff22e22be99fb5bfd303004b68b74a4142b",
+      "files": {
+        "minimal-music.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 43164,
+          "sha256": "b470cbd3d970a0cb547503a14fb3abf0080c3e4cfe6c60d6b8c877b0231e1218"
+        },
+        "minimal-music-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 3450,
+          "sha256": "b4762e79d3b08f3d59bfb632d39727344ea544eab46cec18118029fe4f7fa6b9"
+        },
+        "minimal-music-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 10534,
+          "sha256": "c92a8ef7b9f8bfb711a8d8e74be6b627ee1f571a10c36c7559131b1678eb5c7c"
+        }
+      }
+    },
+    "modern-saas": {
+      "inputHash": "f1aacc897c3ab0b363f7cc8bb4e3345406af2a9c1869e5dc25733a3290e5032d",
+      "files": {
+        "modern-saas.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 12730,
+          "sha256": "f1f3b14dedf74154e104ce46ef949d06df7f2e5009e6cee2786c8e0cec6210bd"
+        },
+        "modern-saas-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 2066,
+          "sha256": "389fa34d4453eb57499935c2fac29cc81e536bdb694f55c3bc760f91ab544d30"
+        },
+        "modern-saas-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 7244,
+          "sha256": "1f39ea1a4afb4018ed1e7aa624c69b3543d51f060cf249641cc5bc69650a94fd"
+        }
+      }
+    },
+    "mono-journal": {
+      "inputHash": "5b3575e5c619adc159f9148000a9f4da4f8b17e144d41fe06b1b84163784d7b4",
+      "files": {
+        "mono-journal.png": {
+          "width": 1200,
+          "height": 944,
+          "bytes": 23782,
+          "sha256": "cba9710e8e16bdf8ff44c16c50614ffb8b1f7393d31e3da79d0f6c87e31f1ba9"
+        },
+        "mono-journal-400.webp": {
+          "width": 400,
+          "height": 315,
+          "bytes": 6466,
+          "sha256": "926505886cdc2903c1c4787655cd54d57b9ad8df7a4a50aac354dae97b8bb0b3"
+        },
+        "mono-journal-800.webp": {
+          "width": 800,
+          "height": 629,
+          "bytes": 18694,
+          "sha256": "1b34bdb9a6ed50afa0db8f269344bf6d99a5629fa06640b022232b5e59e5c658"
+        }
+      }
+    },
+    "museum-ticket": {
+      "inputHash": "e2d1379a1a67833c39182656b0a4b489edb8e83bbf0bac6c4bbe395682de8093",
+      "files": {
+        "museum-ticket.png": {
+          "width": 1200,
+          "height": 948,
+          "bytes": 23361,
+          "sha256": "03687322aff6257a52e28db386753271def4d1201afac4cbc7cb479940022764"
+        },
+        "museum-ticket-400.webp": {
+          "width": 400,
+          "height": 316,
+          "bytes": 5932,
+          "sha256": "7fff0d85046104093de7ea0686ef682571902da5a678d3e0500e979c44ee4a83"
+        },
+        "museum-ticket-800.webp": {
+          "width": 800,
+          "height": 632,
+          "bytes": 17574,
+          "sha256": "ef544aec5332570908f32b0f1d9fc87f3df3af8032e0550f7084b15c7354eeb6"
+        }
+      }
+    },
+    "neon": {
+      "inputHash": "1374c54394d6b716f7011ccf2463e3a6985e6284ac4e76130847886c619b6d4f",
+      "files": {
+        "neon.png": {
+          "width": 1200,
+          "height": 907,
+          "bytes": 20481,
+          "sha256": "bc154565fd735e8b2a808619bdd3d06170eec157b9992d2bf05f6b6922a49eb5"
+        },
+        "neon-400.webp": {
+          "width": 400,
+          "height": 302,
+          "bytes": 2102,
+          "sha256": "cc8b4170b10ea287df3c37aeec65695fd0141e00a4911e0aef785cf3be22b018"
+        },
+        "neon-800.webp": {
+          "width": 800,
+          "height": 605,
+          "bytes": 6942,
+          "sha256": "ee3bd006d9d8bb8fcbc28638650b0eb06bfaf14388269873f96f806270fc1622"
+        }
+      }
+    },
+    "neon-cyber": {
+      "inputHash": "a72975c04d8ce1bdaf495ec52ed0e24dc299503e94d0cef00c0100c1afb5cc64",
+      "files": {
+        "neon-cyber.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 19997,
+          "sha256": "a8b8e7e0002d11b772602326307226282c514a19afe2c1f0dd4f59de955d2a27"
+        },
+        "neon-cyber-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 3450,
+          "sha256": "4dbcf9a783b0a875152f1ee33aa718b56c7dfa36e600cc80cc1a14a5980b50ba"
+        },
+        "neon-cyber-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 11452,
+          "sha256": "6d786f5f4ef0bcf6508095d2b92174690df2e0aafa428420f5fbe7e295a0f151"
+        }
+      }
+    },
+    "neumorphism": {
+      "inputHash": "107684e96502ae677924431f35e7245279964fdb9b5d3c8e10827cf6b3d1f597",
+      "files": {
+        "neumorphism.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 28861,
+          "sha256": "3b8a9919d7a83fce335c52c169d1b8f1577c07bdac5fa6b3f88eeb9210d2afa2"
+        },
+        "neumorphism-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 2262,
+          "sha256": "4dc80446475ec4eee1e77b0a2300532631495a83479e0bb32d4d2ecc6fed1f0d"
+        },
+        "neumorphism-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 7444,
+          "sha256": "8fa9bc534727a0aa1825858809157e4f4afd106953857854388d1f6f5634a72e"
+        }
+      }
+    },
+    "paper-notes": {
+      "inputHash": "c7dea4c559265fe0445f67adb466c795af1ffda6089ca7a8c5e92a32eb83b46d",
+      "files": {
+        "paper-notes.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 26876,
+          "sha256": "d24cc7ff62af7109a914662be0863c959bba23b36407f86334a9dcd0a5d0461b"
+        },
+        "paper-notes-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 6552,
+          "sha256": "1e1745153f1ae67d43122a95b9a8461b8e32d278c875623d92853febf6c05dfb"
+        },
+        "paper-notes-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 19026,
+          "sha256": "37c8a3b4ef9f9b5d97ddf816c66879cd8597794c5cbfadd12506f637afa1a66b"
+        }
+      }
+    },
+    "racing-paddock": {
+      "inputHash": "fe62dbc5d9b9db2f58b25d8a9dfabcb73f0f5c6755a4f3ea6ba6a9a624f0f026",
+      "files": {
+        "racing-paddock.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 25050,
+          "sha256": "c717d9337668525c78b4bd4f8cb8b68d11517485d4f27121f5f24b1bc521c323"
+        },
+        "racing-paddock-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 7894,
+          "sha256": "5cbb0c3d696810a331aee636093112f8c8ffaee27e81e50939b99fcdfc84990c"
+        },
+        "racing-paddock-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 20896,
+          "sha256": "ad3b81138e6dc7cfc9d773f6775dea17a4336976199f3aec65448ad088db34d6"
+        }
+      }
+    },
+    "retro-future": {
+      "inputHash": "47b4a6b124e2ef5aff5d4d4367961bab76db84957dfcd8505c0f98c5c76d47e4",
+      "files": {
+        "retro-future.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 161009,
+          "sha256": "b83785aa5849f9c6dbc4bb0bd238be8da8b97190423044e96541d651c7a000f5"
+        },
+        "retro-future-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 5394,
+          "sha256": "7db6470cc0c1e0a1b06356e7c62239d0cbb3f026df269d4ca9a70378723ee313"
+        },
+        "retro-future-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 19032,
+          "sha256": "079c73021049644df1d1161dca09d605ba5ac142226407a96c56a62e908689a0"
+        }
+      }
+    },
+    "soft-minimalism": {
+      "inputHash": "e657c4402bc56065d0694476c36765c002e459b8ab821b8d48a64d9a42fe2f24",
+      "files": {
+        "soft-minimalism.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 89608,
+          "sha256": "a39410ec8ef3888e117947e1979e9ab9c747ce64087afb25f78e40ff21ac2954"
+        },
+        "soft-minimalism-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 1884,
+          "sha256": "954084363095832766999bbb1bcee8d7f1c77bd136807b1b6a5e972a9cb300b3"
+        },
+        "soft-minimalism-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 7204,
+          "sha256": "d8f1ab1a746fd991e6a672ec2932e794287d335a768be48a4aa445e3a66b861c"
+        }
+      }
+    },
+    "swiss-grid": {
+      "inputHash": "546d2fc08ada9571d56aa29c973a702445b862d68b6f6533bbeab4de8f863500",
+      "files": {
+        "swiss-grid.png": {
+          "width": 1200,
+          "height": 981,
+          "bytes": 19934,
+          "sha256": "df0234ff16d0f93816846537536435c588761042ff9820e203862b827266d0af"
+        },
+        "swiss-grid-400.webp": {
+          "width": 400,
+          "height": 327,
+          "bytes": 5328,
+          "sha256": "6746ea98ea77436ab39f511b1e682b1a1ed872a86dc729163c44d07b85215d4a"
+        },
+        "swiss-grid-800.webp": {
+          "width": 800,
+          "height": 654,
+          "bytes": 16810,
+          "sha256": "3a072bc7b47a5486fd5464aa5fd42b037348d4979ccfedb344dafbc6ba5d84ab"
+        }
+      }
+    },
+    "terminal-cloud": {
+      "inputHash": "236844ad1019bfb6f5e08dc67408c5056d6a84669940fc803595ddf36c4bc83c",
+      "files": {
+        "terminal-cloud.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 24196,
+          "sha256": "3bbed7149b336dd6670cdc025304a353c2648382ee790610cc36035a9fa8a854"
+        },
+        "terminal-cloud-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 4912,
+          "sha256": "33caa8a2a2993ad40edb4744ab2e48edb5216231f1773efd8790e9c4af7d0ef0"
+        },
+        "terminal-cloud-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 15904,
+          "sha256": "d0f67d922dca394a51a80fbd24ed2ab499436254f49a098274a59d348685c204"
+        }
+      }
+    },
+    "terra-maps": {
+      "inputHash": "8aee296dde73c0e81d567568cdd80dc13606accf259e92c704763da9d235528b",
+      "files": {
+        "terra-maps.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 25806,
+          "sha256": "47e5e698f0cb2d34a83661c9236e0e0fba29d66ade8d9608ca66d6f5f77e9806"
+        },
+        "terra-maps-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 4932,
+          "sha256": "d23bc0f74dc3bed0634a85257f55181f920488742170945b570317b61fd46e0d"
+        },
+        "terra-maps-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 15804,
+          "sha256": "7564d76fdbdb5450cb8d7e42b47f904a060e8baa24550fc70e1eed432480cd65"
+        }
+      }
+    },
+    "terrace-travel": {
+      "inputHash": "428a7d7a6b486bb6a1347c158fb88edee01cf0ddae84080449cb1887c475443f",
+      "files": {
+        "terrace-travel.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 24473,
+          "sha256": "36c92412fd32f13ea1f7e6bcc1c7ae62719b021213628d9a14bd6bf121d8c3ea"
+        },
+        "terrace-travel-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 5282,
+          "sha256": "2dadf8c6950e2d012fb664bdf697b6c37f47c616a8f8a31a3ef34de12ec6446b"
+        },
+        "terrace-travel-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 15754,
+          "sha256": "1de5104c8b9756a3a8a1ada08cdb5215e2cdba9dd4f150614c923a0385ea8022"
+        }
+      }
+    },
+    "travel-booking": {
+      "inputHash": "d8e84744365f5ff3f4c22311626335bfb8e7e70b1210d8c633b2984c81f8bf0a",
+      "files": {
+        "travel-booking.png": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 53687,
+          "sha256": "5e7148e6b7dfbe3d2d5a445a599d1e171e6c79d1dbe58599ec3d1ef1edf4cbee"
+        },
+        "travel-booking-400.webp": {
+          "width": 400,
+          "height": 300,
+          "bytes": 3176,
+          "sha256": "f984f137a676c6e1f15207f5fcae877edd4319f611b69faed93820a258ec6926"
+        },
+        "travel-booking-800.webp": {
+          "width": 800,
+          "height": 600,
+          "bytes": 9444,
+          "sha256": "32407e2da7db89b430d871dcfb4fba8887d99fdaa2897573403ca3da2ca24822"
+        }
+      }
+    }
+  }
+}

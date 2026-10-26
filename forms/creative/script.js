@@ -3,26 +3,16 @@ class CreativeLoginForm extends FormUtils.LoginFormBase {
     constructor() {
         super({
             hideOnSuccess: ['.creative-social', '.signup-link'],
-            validators: {
-                email: (v) => {
-                    if (!v) return { isValid: false, message: 'Your creative email is required' };
-                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return { isValid: false, message: 'Please enter a valid email address' };
-                    return { isValid: true };
-                },
-                password: (v) => {
-                    if (!v) return { isValid: false, message: 'Your creative password is required' };
-                    if (v.length < 6) return { isValid: false, message: 'Password needs at least 6 characters to unlock creativity' };
-                    return { isValid: true };
-                },
-            },
         });
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         this.injectKeyframes();
 
         // Floating shapes parallax
         document.addEventListener('mousemove', (e) => {
+            if (FormUtils.prefersReducedMotion()) return;
             const shapes = document.querySelectorAll('.shape');
             const mx = e.clientX / window.innerWidth;
             const my = e.clientY / window.innerHeight;
@@ -36,6 +26,7 @@ class CreativeLoginForm extends FormUtils.LoginFormBase {
         const card = document.querySelector('.login-card');
         if (card) {
             card.addEventListener('mousemove', (e) => {
+                if (FormUtils.prefersReducedMotion()) return;
                 const rect = card.getBoundingClientRect();
                 const dx = e.clientX - (rect.left + rect.width / 2);
                 const dy = e.clientY - (rect.top + rect.height / 2);
@@ -66,6 +57,7 @@ class CreativeLoginForm extends FormUtils.LoginFormBase {
 
     onInputFocus(e) {
         super.onInputFocus(e);
+        if (FormUtils.prefersReducedMotion()) return;
         const wrapper = e.target.closest('.input-wrapper');
         if (!wrapper) return;
         for (let i = 0; i < 5; i++) {
@@ -90,6 +82,7 @@ class CreativeLoginForm extends FormUtils.LoginFormBase {
     }
 
     celebrate() {
+        if (FormUtils.prefersReducedMotion()) return;
         const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#6c5ce7', '#feca57'];
         for (let i = 0; i < 20; i++) {
             setTimeout(() => {

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account — Minimal</title>
+    <meta name="description" content="Create account. Choose an email and a new password. Demo only.">
+    <meta name="author" content="Aigars Silkalns / Colorlib">
+    <link rel="canonical" href="https://puikinsh.github.io/login-forms/forms/minimal/sign-up.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%236366f1'/><text x='50' y='68' font-size='60' text-anchor='middle' fill='white' font-family='system-ui,sans-serif'>L</text></svg>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Create account. Choose an email and a new password. Demo only.">
+    <meta property="og:description" content="Create account. Choose an email and a new password. Demo only.">
+    <meta property="og:url" content="https://puikinsh.github.io/login-forms/forms/minimal/sign-up.html">
+    <meta property="og:image" content="https://puikinsh.github.io/login-forms/assets/screenshots/minimal.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Create account. Choose an email and a new password. Demo only.">
+    <meta name="twitter:description" content="Create account. Choose an email and a new password. Demo only.">
+    <meta name="twitter:image" content="https://puikinsh.github.io/login-forms/assets/screenshots/minimal.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-screen">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>Create account</h2>
+                <p>Choose an email and a new password.</p>
+            </div>
+
+            <form class="login-form" id="loginForm" method="post" data-auth-flow="signup" novalidate>
+                <p class="auth-demo">Demo only. No account is created, no email is sent, and no password is changed. Nothing is saved. Try error@demo.com to preview a service error.</p>
+                <noscript><p class="auth-demo">Enable JavaScript to try this demo. The submit button stays disabled without it.</p></noscript>
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
+                        <label for="email">Email</label>
+                    </div>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="password" id="password" name="password" required autocomplete="new-password" aria-describedby="passwordHelp passwordError" placeholder=" ">
+                        <label for="password">Password</label>
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
+                            <span class="toggle-icon"></span>
+                        </button>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                <p class="auth-help" id="passwordHelp">Use at least 15 characters. Spaces and pasted passphrases are welcome. Do not use a real password in this demo.</p>
+
+
+
+                <button type="submit" disabled class="login-btn">
+                    <span class="btn-text">Create demo account</span>
+                    <span class="btn-loader"></span>
+                </button>
+            </form>
+            <nav class="auth-navigation" aria-label="Account"><a href="index.html">Back to sign in</a><a href="reset-password.html">Reset password</a></nav>
+            <div class="success-message" id="successMessage" tabindex="-1">
+                <div class="success-icon">✓</div>
+                <h3>Sign-up demo complete</h3>
+                <p>No account was created and no data was saved.</p>
+                <nav class="auth-navigation" aria-label="Next step"><a href="index.html">Back to sign in</a></nav>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/js/form-utils.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

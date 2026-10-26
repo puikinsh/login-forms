@@ -4,19 +4,12 @@ class GradientWaveLoginForm extends FormUtils.LoginFormBase {
         super({
             submitButtonSelector: '.gradient-button',
             hideOnSuccess: ['.social-login', '.signup-link'],
-            validators: {
-                email: FormUtils.validateEmail,
-                password: (value) => {
-                    if (!value) return { isValid: false, message: 'Password is required' };
-                    if (value.length < 6) return { isValid: false, message: 'Password must be at least 6 characters long' };
-                    return { isValid: true };
-                },
-            },
         });
         this.particleIntervals = [];
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         this.injectKeyframes();
         this.setupCardTilt();
         this.animateParticles();
@@ -42,6 +35,7 @@ class GradientWaveLoginForm extends FormUtils.LoginFormBase {
         const card = document.querySelector('.login-card');
         if (!card) return;
         card.addEventListener('mousemove', (e) => {
+            if (FormUtils.prefersReducedMotion()) return;
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -59,6 +53,7 @@ class GradientWaveLoginForm extends FormUtils.LoginFormBase {
         particles.forEach((particle, index) => {
             let last = 0;
             const tick = (now) => {
+                if (FormUtils.prefersReducedMotion()) return;
                 if (!document.body.contains(particle)) return;
                 if (now - last > 2000 + index * 500) {
                     last = now;
@@ -84,6 +79,7 @@ class GradientWaveLoginForm extends FormUtils.LoginFormBase {
     }
 
     createRipple(event, container) {
+        if (FormUtils.prefersReducedMotion()) return;
         if (!container) return;
         const rect = container.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);

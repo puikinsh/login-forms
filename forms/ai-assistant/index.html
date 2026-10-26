@@ -50,23 +50,26 @@
                 <p>Connect to your AI workspace</p>
             </div>
             
-            <form class="login-form" id="loginForm" novalidate>
+            <form class="login-form" id="loginForm" method="post" novalidate>
                 <div class="smart-field" data-field="email">
+                    <div class="field-control">
                     <div class="field-background"></div>
-                    <input type="email" id="email" name="email" required autocomplete="email">
+                    <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
                     <label for="email">Email Address</label>
                     <div class="ai-indicator">
                         <div class="ai-pulse"></div>
                     </div>
                     <div class="field-completion"></div>
+                    </div>
                     <span class="error-message" id="emailError"></span>
                 </div>
 
                 <div class="smart-field" data-field="password">
+                    <div class="field-control">
                     <div class="field-background"></div>
-                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                    <input type="password" id="password" name="password" required autocomplete="current-password" aria-describedby="passwordError" placeholder=" ">
                     <label for="password">Password</label>
-                    <button type="button" class="smart-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                    <button type="button" class="smart-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
                         <svg class="toggle-show" width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M9 3.75c-3.15 0-5.85 1.89-7.02 4.72a.75.75 0 000 .56c1.17 2.83 3.87 4.72 7.02 4.72s5.85-1.89 7.02-4.72a.75.75 0 000-.56C14.85 5.64 12.15 3.75 9 3.75zM9 12a3 3 0 110-6 3 3 0 010 6z" fill="currentColor"/>
                         </svg>
@@ -78,6 +81,7 @@
                         <div class="ai-pulse"></div>
                     </div>
                     <div class="field-completion"></div>
+                    </div>
                     <span class="error-message" id="passwordError"></span>
                 </div>
 
@@ -92,7 +96,7 @@
                         </span>
                         <span class="checkbox-text">Remember this session</span>
                     </label>
-                    <a href="#" class="neural-link">Reset access</a>
+                    <a href="reset-password.html" class="neural-link" data-action="forgot-password">Reset access</a>
                 </div>
 
                 <button type="submit" class="neural-button">
@@ -116,7 +120,7 @@
             </div>
 
             <div class="neural-social">
-                <button type="button" class="social-neural">
+                <button type="button" class="social-neural" data-action="social" data-provider="Google">
                     <div class="social-bg"></div>
                     <svg width="16" height="16" viewBox="0 0 16 16">
                         <path fill="#4285F4" d="M14.9 8.161c0-.476-.039-.954-.118-1.421H8.021v2.681h3.833a3.321 3.321 0 01-1.431 2.161v1.785h2.3c1.349-1.25 2.177-3.103 2.177-5.206z"/>
@@ -128,7 +132,7 @@
                     <div class="social-glow"></div>
                 </button>
                 
-                <button type="button" class="social-neural">
+                <button type="button" class="social-neural" data-action="social" data-provider="GitHub">
                     <div class="social-bg"></div>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="#000000">
                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
@@ -140,10 +144,10 @@
 
             <div class="signup-section">
                 <span>New to Neural? </span>
-                <a href="#" class="neural-signup">Join the network</a>
+                <a href="sign-up.html" class="neural-signup" data-action="signup">Join the network</a>
             </div>
 
-            <div class="success-neural" id="successMessage">
+            <div class="success-neural" id="successMessage" tabindex="-1">
                 <div class="success-core">
                     <div class="success-rings">
                         <div class="success-ring"></div>
@@ -155,7 +159,7 @@
                     </svg>
                 </div>
                 <h3>Neural Link Established</h3>
-                <p>Accessing your AI workspace...</p>
+                <p>Sign-in demo complete. No session was created and no redirect will occur.</p>
             </div>
         </div>
     </div>

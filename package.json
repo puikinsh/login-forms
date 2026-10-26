@@ -1,0 +1,26 @@
+{
+  "name": "modern-login-forms",
+  "private": true,
+  "description": "Development-only quality checks for dependency-free login templates",
+  "engines": {
+    "node": ">=24.8.0"
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs && python3 scripts/package-forms.py --check && node scripts/screenshots.mjs --check && python3 scripts/visual-reference.py --check",
+    "test": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "test:report": "playwright show-report",
+    "preview": "node scripts/serve.mjs",
+    "package:forms": "python3 scripts/package-forms.py",
+    "test:gallery": "playwright test tests/gallery.spec.js tests/comparison.spec.js tests/favorites.spec.js tests/named-lists.spec.js",
+    "screenshots": "node scripts/screenshots.mjs",
+    "test:visual": "playwright test --project=visual-desktop --project=visual-mobile",
+    "visual:update": "node scripts/screenshots.mjs --check && python3 scripts/visual-reference.py"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.64.1",
+    "html-validate": "11.17.0",
+    "sharp": "0.35.5"
+  }
+}

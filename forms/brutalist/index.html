@@ -30,11 +30,11 @@
                 <p>Enter your credentials</p>
             </div>
             
-            <form class="login-form" id="loginForm" novalidate>
+            <form class="login-form" id="loginForm" method="post" novalidate>
                 <div class="form-group">
                     <label for="email" class="form-label">Email</label>
                     <div class="input-wrapper">
-                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
                     </div>
                     <span class="error-message" id="emailError"></span>
                 </div>
@@ -42,8 +42,8 @@
                 <div class="form-group">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-wrapper password-wrapper">
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
-                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                        <input type="password" id="password" name="password" required autocomplete="current-password" aria-describedby="passwordError" placeholder=" ">
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
                             <span class="toggle-text">SHOW</span>
                         </button>
                     </div>
@@ -58,7 +58,7 @@
                             <span>Remember me</span>
                         </label>
                     </div>
-                    <a href="#" class="forgot-link">Forgot password?</a>
+                    <a href="reset-password.html" class="forgot-link" data-action="forgot-password">Forgot password?</a>
                 </div>
 
                 <button type="submit" class="login-btn">
@@ -76,23 +76,23 @@
             </div>
 
             <div class="social-login">
-                <button type="button" class="social-btn">
+                <button type="button" class="social-btn" data-action="social" data-provider="Google">
                     <span class="social-text">GOOGLE</span>
                 </button>
-                <button type="button" class="social-btn">
+                <button type="button" class="social-btn" data-action="social" data-provider="GitHub">
                     <span class="social-text">GITHUB</span>
                 </button>
             </div>
 
             <div class="signup-link">
                 <span>No account? </span>
-                <a href="#">Create one</a>
+                <a href="sign-up.html" data-action="signup">Create one</a>
             </div>
 
-            <div class="success-message" id="successMessage">
+            <div class="success-message" id="successMessage" tabindex="-1">
                 <div class="success-icon">✓</div>
                 <h3>Success</h3>
-                <p>Redirecting...</p>
+                <p>Sign-in demo complete. No session was created and no redirect will occur.</p>
             </div>
         </div>
     </div>

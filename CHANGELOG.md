@@ -5,6 +5,67 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] — 2026-10-26
+
+The collection now ships 40 designs, each with four account screens, with no runtime dependencies.
+
+### Twenty additional design studies
+
+- Expanded the collection to 40 templates with original editorial, architectural, ceramics, darkroom, botanical, recording desk, museum ticket, fashion, orbital, travel, terminal, paper, motorsport, Bauhaus, journal, gallery, map, market, and kinetic typography compositions.
+- Added all four matching screens, shared validation/demo behavior, SEO metadata, responsive local artwork, gallery entries, and standalone packages for every new design. Original designs, saved favorites, and named lists remain available together.
+- Documented Framer and Dribbble research and composition rationale. No third-party artwork, fonts, runtime dependencies, or template code are redistributed.
+- Replaced fixed gallery-count checks with inventory-based assertions and retained a per-template thumbnail transfer budget as the collection grows.
+
+### Companion authentication screens
+
+- Added matching sign-up, reset-request, and new-password pages to all 40 designs and standalone downloads.
+- Connected existing sign-up/reset links, including navigation without JavaScript.
+- Added accessible password-creation validation, explicit local demo disclosures, generic reset results, loading/success announcements, and retryable demo failures.
+- Added cross-browser behavior, accessibility, offline-package, and desktop/mobile visual checks for the companion screens. CI runs browser/visual projects as separate jobs with per-project reports. No runtime dependencies added.
+
+
+### Screenshots and visual regression
+
+- Refreshed all 40 screenshots from current forms and added responsive 400/800px WebP gallery previews, preserving optimized PNGs for documentation/social/fallback use.
+- Added repeatable capture/encoding, source freshness and image integrity checks, transfer budgets, and dense-screen/breakpoint selection tests.
+- Added 332 desktop/mobile visual tests (1,240 comparisons) covering every form's initial/error layouts, the full gallery, and preview dialog. Frozen reference source is rendered in the same browser for portable expected/actual/diff checks; acceptance remains an explicit developer action.
+
+### Gallery
+
+- Added locally saved named shortlists with separate memberships, duplicate-name validation, rename/delete controls, and cross-tab updates. Shared named collections import as independent copies; list and comparison sharing includes the name and complete membership without exposing local IDs. No runtime dependencies added.
+
+- Added per-card favorites, local persistence and cross-tab synchronization, combined favorites filtering, quick comparisons, and portable shortlist links with clipboard/manual-copy support. Shared lists merge into local favorites only when explicitly saved.
+- Grouped the complete 40-form collection in both preview selectors, with favorites/shared picks first and all original and newer designs available regardless of gallery filters.
+
+- Added synchronized side-by-side comparisons with two form selectors, independent values, per-form downloads, shareable comparison URLs, and a horizontally scrollable phone layout. The second iframe loads only on demand.
+
+- Added shareable preview URLs for form, screen, and desktop/mobile view, with automatic restoration, filter preservation, Copy link/manual-copy fallback, and Back/Forward support without iframe history steps.
+
+- Added a native screen selector to live previews for sign-in, sign-up, reset requests, and new-password screens, synchronized with navigation inside the demo. Desktop/mobile switching preserves entered values without reloading; screen loading is announced.
+
+- Added search and category filters with result counts, empty states, and shareable filter URLs.
+- Added on-demand desktop/mobile live previews with keyboard dismissal and focus restoration.
+- Added complete standalone ZIP downloads for all 40 forms, with the shared JavaScript included.
+- Added package freshness checks and cross-browser gallery/download tests. Gallery demo links and downloads still work without JavaScript.
+
+### Fixed
+
+- Fixed floating labels overlapping typed values, invalid-field labels dropping back over text, error blocks expanding positioned control backgrounds, and password-toggle animations replacing positioning transforms.
+- Let validation text wrap in normal flow, removed empty error spacing, restored vertical scrolling for tall forms, and preserved the case of revealed credentials. Added all-screen geometry checks at desktop, zoom-equivalent, phone, and narrow-phone widths.
+
+- Unified sign-in validation across all 20 templates: validate every field, accept existing passwords unchanged, and allow email addresses across domains.
+- Restored native keyboard access and visible focus for custom checkboxes; labeled icon-only social controls and exposed password-toggle state.
+- Associated errors with inputs, focused the first invalid field, announced loading, preserved authentication errors for retry, and focused success results.
+- Bound reset, signup, and provider actions through explicit data attributes; scoped shared behavior to each form instance.
+- Improved text/error contrast in affected designs and notifications; skipped decorative JavaScript effects for reduced-motion preferences.
+- Used POST as the no-JavaScript fallback so credentials do not enter URL query strings.
+
+### Added
+
+- Optional asynchronous `authenticate(email, password, data)` integration callback and duplicate-submit protection.
+- Development-only Playwright and axe checks across all templates in Chromium, Firefox, and WebKit, plus HTML, syntax, local-reference, and form-contract checks.
+- GitHub Actions quality checks, pinned development dependencies, and contributor setup instructions. Distributed templates remain dependency-free.
+
 ## [2.0.0] — 2026-04-28
 
 A foundational refactor focused on code reuse, accessibility, security, and performance. Every visible feature is preserved; the rewrite is internal.

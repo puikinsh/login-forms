@@ -6,22 +6,11 @@ class RetroFutureLoginForm extends FormUtils.LoginFormBase {
             formGroupSelector: '.retro-field',
             cardSelector: '.future-card',
             hideOnSuccess: ['.future-social', '.future-signup', '.retro-divider'],
-            validators: {
-                email: (v) => {
-                    if (!v) return { isValid: false, message: 'Email Required' };
-                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return { isValid: false, message: 'Invalid Format' };
-                    return { isValid: true };
-                },
-                password: (v) => {
-                    if (!v) return { isValid: false, message: 'Access Code Required' };
-                    if (v.length < 6) return { isValid: false, message: 'Code Too Short' };
-                    return { isValid: true };
-                },
-            },
         });
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         // Hologram effect on focus
         [this.form.querySelector('#email'), this.form.querySelector('#password')].forEach(input => {
             if (!input) return;
@@ -52,6 +41,7 @@ class RetroFutureLoginForm extends FormUtils.LoginFormBase {
         if (card) {
             let last = 0;
             const tick = (now) => {
+                if (FormUtils.prefersReducedMotion()) return;
                 if (!document.body.contains(card)) return;
                 if (now - last > 3000) {
                     last = now;
@@ -79,10 +69,10 @@ class RetroFutureLoginForm extends FormUtils.LoginFormBase {
         setTimeout(() => {
             this.form.style.display = 'none';
             this.hideOnSuccess.forEach(sel => {
-                const el = document.querySelector(sel);
+                const el = this.root.querySelector(sel);
                 if (el) el.style.display = 'none';
             });
-            this.successMessage?.classList.add('show');
+            this.revealSuccess();
         }, 300);
     }
 }

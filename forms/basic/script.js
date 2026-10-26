@@ -7,6 +7,7 @@ class BasicLoginForm extends FormUtils.LoginFormBase {
     }
 
     decorate() {
+        if (FormUtils.prefersReducedMotion()) return;
         FormUtils.addEntranceAnimation(this.form.closest('.login-card'), 100);
     }
 }

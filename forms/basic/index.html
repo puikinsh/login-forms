@@ -27,10 +27,10 @@
                 <p>Enter your credentials to access your account</p>
             </div>
             
-            <form class="login-form" id="loginForm" novalidate>
+            <form class="login-form" id="loginForm" method="post" novalidate>
                 <div class="form-group">
                     <div class="input-wrapper">
-                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <input type="email" id="email" name="email" required autocomplete="username" aria-describedby="emailError" autocapitalize="none" spellcheck="false" placeholder=" ">
                         <label for="email">Email Address</label>
                     </div>
                     <span class="error-message" id="emailError"></span>
@@ -38,9 +38,9 @@
 
                 <div class="form-group">
                     <div class="input-wrapper password-wrapper">
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                        <input type="password" id="password" name="password" required autocomplete="current-password" aria-describedby="passwordError" placeholder=" ">
                         <label for="password">Password</label>
-                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password" aria-pressed="false">
                             <span class="eye-icon"></span>
                         </button>
                     </div>
@@ -55,7 +55,7 @@
                             Remember me
                         </span>
                     </label>
-                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <a href="reset-password.html" class="forgot-password" data-action="forgot-password">Forgot password?</a>
                 </div>
 
                 <button type="submit" class="login-btn">
@@ -65,13 +65,13 @@
             </form>
 
             <div class="signup-link">
-                <p>Don't have an account? <a href="#">Create one</a></p>
+                <p>Don't have an account? <a href="sign-up.html" data-action="signup">Create one</a></p>
             </div>
 
-            <div class="success-message" id="successMessage">
+            <div class="success-message" id="successMessage" tabindex="-1">
                 <div class="success-icon">✓</div>
                 <h3>Login Successful!</h3>
-                <p>Redirecting to your dashboard...</p>
+                <p>Sign-in demo complete. No session was created and no redirect will occur.</p>
             </div>
         </div>
     </div>
